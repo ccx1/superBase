@@ -3,6 +3,14 @@
 
 ### android
 
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+
 	dependencies {
 	        compile 'com.github.ci250454344:ViewUtilsList:v1.0.1'
 	}

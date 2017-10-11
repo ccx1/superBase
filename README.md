@@ -69,7 +69,9 @@
    2.ImageUtils 主要介绍几个方法,一个是将bitmap转换成String值进行传递,还有一个是将String转换成Bitmap值进行传递的.
    3.MD5 MD5加密工具类,主要是复杂的代码.写起来有点麻烦,抄了一个工具类进行,直接 MD5.md5("") 直接进行加密
    
-   md5(String str)
+   
+  	public static String md5(String str)
+   
    
    4.Logutils 主要是一个日志的管理类,一键管理,用一个isdebug的参数来进行管理,如果不使用了,将这个值设置为false即可
    

@@ -3,6 +3,8 @@
 
 ### android
 
+### maven
+
 	allprojects {
 		repositories {
 			...
@@ -10,6 +12,7 @@
 		}
 	}
 
+### build.gradle
 
 	dependencies {
 	        compile 'com.github.ci250454344:ViewUtilsList:v1.0.1'

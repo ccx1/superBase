@@ -5,9 +5,7 @@
       <module fileurl="file://D:\AsDmb\ViewUtilsList\ViewUtils.iml" filepath="D:\AsDmb\ViewUtilsList\ViewUtils.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewUtilsList.iml" filepath="$PROJECT_DIR$/ViewUtilsList.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\AsDmb\ViewUtilsList\app\app.iml" filepath="D:\AsDmb\ViewUtilsList\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/viewutilslist/viewutilslist.iml" filepath="$PROJECT_DIR$/viewutilslist/viewutilslist.iml" />
-      <module fileurl="file://D:\AsDmb\ViewUtilsList\viewutilslist\viewutilslist.iml" filepath="D:\AsDmb\ViewUtilsList\viewutilslist\viewutilslist.iml" />
     </modules>
   </component>
 </project>

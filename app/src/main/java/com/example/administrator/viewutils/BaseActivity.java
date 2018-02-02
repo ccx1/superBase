@@ -4,10 +4,6 @@ import com.example.administrator.viewutilslist.SuperBaseActivity;
 import com.example.administrator.viewutilslist.utils.LogUtils;
 import com.example.administrator.viewutilslist.utils.ToastUtils;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 /**
  * Created by v_chicunxiang on 2018/2/2.
  *
@@ -43,7 +39,6 @@ public class BaseActivity extends SuperBaseActivity {
     protected void onStart() {
         super.onStart();
         LogUtils.d("onStart");
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -68,7 +63,6 @@ public class BaseActivity extends SuperBaseActivity {
     protected void onStop() {
         super.onStop();
         LogUtils.d("onStop");
-        EventBus.getDefault().unregister(this);
     }
 
     @Override
@@ -77,13 +71,5 @@ public class BaseActivity extends SuperBaseActivity {
         LogUtils.d("onRestart");
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(Object event) {
-        onMessageEvent(event);
-    }
-
-    protected void onMessageEvent(Object event) {
-
-    }
 
 }

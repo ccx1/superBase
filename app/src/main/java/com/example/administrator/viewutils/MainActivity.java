@@ -16,4 +16,6 @@ public class MainActivity extends BaseActivity  {
         view.setText("aaa");
 
     }
+
+
 }

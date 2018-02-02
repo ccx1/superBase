@@ -19,6 +19,10 @@ import com.example.administrator.viewutilslist.utils.LogUtils;
 import com.example.administrator.viewutilslist.utils.PermissionRequesUtls;
 import com.example.administrator.viewutilslist.utils.ToastUtils;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.List;
 
 /**
@@ -30,9 +34,9 @@ import java.util.List;
 
 public abstract class SuperBaseActivity extends AppCompatActivity implements PermissionRequesUtls.OnRequestPermissionsResultCallbacks {
     private SparseArray<View> mSparseArray = new SparseArray<>();
-    private long                 mTimeMillis;
-    private Toolbar              toolbar;
-    private ActionBar            mActionBar;
+    private long      mTimeMillis;
+    private Toolbar   toolbar;
+    public  ActionBar mActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +84,6 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
      */
     public void setToolbarTitle(String title) {
         if (mActionBar == null) {
-
             mActionBar = getSupportActionBar();
         }
         mActionBar.setTitle(title);
@@ -90,14 +93,11 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
      * [绑定控件]
      *
      * @param resId
-     *
      * @return
      */
-    protected  <T extends View> T $(int resId) {
+    protected <T extends View> T $(int resId) {
         return (T) super.findViewById(resId);
     }
-
-
 
 
     /**
@@ -106,7 +106,7 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
      * @return
      */
     public boolean isNeedTranslucentStatus() {
-        return true;
+        return false;
     }
 
     /**
@@ -223,14 +223,6 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
         startActivityForResult(intent, requestCode);
     }
 
-    /**
-     * 是否显示返回键,默认显示
-     *
-     * @return
-     */
-    public boolean isShowHomeEnabled() {
-        return true;
-    }
 
 
     @Override
@@ -252,7 +244,7 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        PermissionRequesUtls.onRequestPermissionsResult(requestCode, permissions, grantResults,this);
+        PermissionRequesUtls.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
 
     @Override
@@ -269,5 +261,27 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
         for (String perm : perms) {
             LogUtils.e("拒绝:" + perm);
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(Object event) {
+        onMessageEvent(event);
+    }
+
+    protected void onMessageEvent(Object event) {
+
     }
 }

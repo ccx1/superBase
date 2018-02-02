@@ -37,7 +37,6 @@ public class NetworkStateView extends FrameLayout {
     public NetworkStateView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NetworkStateView);
-        
         init();
     }
 

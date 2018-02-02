@@ -7,6 +7,8 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.text.format.Time;
 
+import com.example.administrator.viewutilslist.utils.common.LogUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;

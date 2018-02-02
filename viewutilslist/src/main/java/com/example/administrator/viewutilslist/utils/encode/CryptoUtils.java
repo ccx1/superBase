@@ -1,6 +1,6 @@
 package com.example.administrator.viewutilslist.utils.encode;
 
-import com.example.administrator.viewutilslist.utils.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtils;
 
 import java.security.MessageDigest;
 import java.util.Arrays;

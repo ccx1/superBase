@@ -6,6 +6,9 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.example.administrator.viewutilslist.BaseConstant;
+import com.example.administrator.viewutilslist.utils.common.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.SharedPreferencesUtils;
+import com.example.administrator.viewutilslist.utils.common.ToastUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
@@ -43,6 +46,7 @@ public class Utils {
         initSharePreferences(mContext);
         initStaticToast(mContext);
         LogUtils.setIsDebug(true);
+        PathUtil.getInstance().initDirs();
     }
 
     public Handler HandlerManager() {

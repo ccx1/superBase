@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.administrator.viewutilslist.utils.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtils;
 import com.example.administrator.viewutilslist.utils.PermissionRequesUtls;
-import com.example.administrator.viewutilslist.utils.ToastUtils;
+import com.example.administrator.viewutilslist.utils.common.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

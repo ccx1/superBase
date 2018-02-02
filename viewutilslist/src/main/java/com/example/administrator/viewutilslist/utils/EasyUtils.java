@@ -6,6 +6,8 @@ import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
 import android.os.Environment;
 
+import com.example.administrator.viewutilslist.utils.common.LogUtils;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;

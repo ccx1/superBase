@@ -2,6 +2,8 @@ package com.example.administrator.viewutilslist.utils;
 
 import android.text.TextUtils;
 
+import com.example.administrator.viewutilslist.utils.common.LogUtils;
+
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Locale;

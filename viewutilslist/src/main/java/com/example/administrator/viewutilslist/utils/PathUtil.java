@@ -40,30 +40,30 @@ public class PathUtil {
         return instance;
     }
 
-    public void initDirs(String var1, String var2, Context var3) {
-        String var4 = var3.getPackageName();
+    public void initDirs(String fileDir, String path, Context context) {
+        String var4 = context.getPackageName();
         pathPrefix = "/Android/data/" + var4 + "/";
-        this.voicePath = generateVoicePath(var1, var2, var3);
+        this.voicePath = generateVoicePath(fileDir, path, context);
         if(!this.voicePath.exists()) {
             this.voicePath.mkdirs();
         }
 
-        this.imagePath = generateImagePath(var1, var2, var3);
+        this.imagePath = generateImagePath(fileDir, path, context);
         if(!this.imagePath.exists()) {
             this.imagePath.mkdirs();
         }
 
-        this.historyPath = generateHistoryPath(var1, var2, var3);
+        this.historyPath = generateHistoryPath(fileDir, path, context);
         if(!this.historyPath.exists()) {
             this.historyPath.mkdirs();
         }
 
-        this.videoPath = generateVideoPath(var1, var2, var3);
+        this.videoPath = generateVideoPath(fileDir, path, context);
         if(!this.videoPath.exists()) {
             this.videoPath.mkdirs();
         }
 
-        this.filePath = generateFiePath(var1, var2, var3);
+        this.filePath = generateFiePath(fileDir, path, context);
         if(!this.filePath.exists()) {
             this.filePath.mkdirs();
         }

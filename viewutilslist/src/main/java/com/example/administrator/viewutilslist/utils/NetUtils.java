@@ -10,6 +10,8 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 
+import com.example.administrator.viewutilslist.utils.common.LogUtils;
+
 /**
  * Created by v_chicunxiang on 2018/2/2.
  *

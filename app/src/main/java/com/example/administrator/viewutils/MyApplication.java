@@ -1,6 +1,6 @@
 package com.example.administrator.viewutils;
 
-import com.example.administrator.viewutilslist.BaseViewApplication;
+import com.example.administrator.viewutilslist.SuperBaseApplication;
 
 /**
  * Created by Administrator on 2017/9/22.
@@ -9,7 +9,7 @@ import com.example.administrator.viewutilslist.BaseViewApplication;
  * @创建时间 2017/9/22 10:00
  */
 
-public class MyApplication extends BaseViewApplication {
+public class MyApplication extends SuperBaseApplication {
 
     private static MyApplication appContext;
 

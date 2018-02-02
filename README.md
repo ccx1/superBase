@@ -101,6 +101,14 @@
     </android.support.v7.widget.Toolbar>
 
 
+   13. 增加读取pdf的jar包,能够读取到pdf的内容并且以String的形式进行写入.也就是成功将其转成txt文本格式,具体方式在fileutil里面实现方式是,在assets目录下放一个pdf文件即可
+
+    String pdfContent = FileUtils.readPdfContent2String(MainActivity.this, "fileName.pdf");
+
+   将这个String返回结果进行写入文件即可,另外推荐一种直接显示pdf的开源框架
+
+   [pdfView](https://github.com/JoanZapata/android-pdfview)
+
 
 
 

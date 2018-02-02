@@ -46,7 +46,7 @@ public class Utils {
         initSharePreferences(mContext);
         initStaticToast(mContext);
         LogUtils.setIsDebug(true);
-        PathUtil.getInstance().initDirs(context.getFilesDir().getAbsolutePath(),null,context);
+        PathUtil.getInstance().initDirs("files",null,context);
     }
 
     public Handler HandlerManager() {

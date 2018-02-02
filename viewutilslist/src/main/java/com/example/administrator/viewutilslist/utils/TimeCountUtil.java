@@ -1,4 +1,4 @@
-package com.example.administrator.viewutilslist.utilslist;
+package com.example.administrator.viewutilslist.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

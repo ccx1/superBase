@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.example.administrator.viewutilslist.listerner.ActivityLifecycleListener;
-import com.example.administrator.viewutilslist.manager.ActivityManager;
+import com.example.administrator.viewutilslist.manager.SuperActivityManager;
+import com.example.administrator.viewutilslist.utils.Utils;
 
 /**
  * Created by Administrator on 2017/10/11.
@@ -13,7 +14,7 @@ import com.example.administrator.viewutilslist.manager.ActivityManager;
  * @创建时间 2017/10/11 19:22
  */
 
-public class ViewUtilsApplication extends Application {
+public class BaseViewApplication extends Application {
 
     @Override
     public void onCreate() {
@@ -24,13 +25,17 @@ public class ViewUtilsApplication extends Application {
         registerActivityLifecycleCallbacks(new ActivityLifecycleListener() {
             @Override
             public void onActivityStartedListerner(Activity activity) {
-                ActivityManager.getInstance().pushOneActivity(activity);
+                SuperActivityManager.getInstance().pushOneActivity(activity);
             }
 
             @Override
             protected void onActivityDestroyedListerner(Activity activity) {
-                ActivityManager.getInstance().popOneActivity(activity);
+                SuperActivityManager.getInstance().popOneActivity(activity);
             }
         });
+
+        Utils.init(this);
+
+
     }
 }

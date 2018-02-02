@@ -1,4 +1,4 @@
-package com.example.administrator.viewutilslist.utilslist;
+package com.example.administrator.viewutilslist.utils.encode;
 
 import java.io.File;
 import java.io.FileInputStream;

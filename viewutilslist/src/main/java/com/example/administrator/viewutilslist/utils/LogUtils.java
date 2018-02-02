@@ -1,4 +1,4 @@
-package com.example.administrator.viewutilslist.utilslist;
+package com.example.administrator.viewutilslist.utils;
 
 import android.util.Log;
 
@@ -14,8 +14,17 @@ public class LogUtils {
     private LogUtils() {
     }
 
-    public static        boolean isDebug = true;
+    private static        boolean isDebug = true;
     private static final String  TAG     = "tag";
+
+
+    public static void setIsDebug(boolean isDebug) {
+        LogUtils.isDebug = isDebug;
+    }
+
+    public static boolean isDebug() {
+        return isDebug;
+    }
 
     public static void i(String msg){
         if (isDebug) {

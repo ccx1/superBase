@@ -1,4 +1,4 @@
-package com.example.administrator.viewutilslist.utilslist;
+package com.example.administrator.viewutilslist.utils.encode;
 
 import android.app.Activity;
 import android.content.Context;

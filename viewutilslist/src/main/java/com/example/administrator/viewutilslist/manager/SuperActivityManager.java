@@ -11,17 +11,17 @@ import java.util.ArrayList;
  * @创建时间 2017/9/22 11:29
  */
 
-public class ActivityManager {
+public class SuperActivityManager {
 
 
-    private static final ActivityManager instance = new ActivityManager();
+    private static final SuperActivityManager instance = new SuperActivityManager();
     private ArrayList<Activity> activityStack;
 
-    public static ActivityManager getInstance() {
+    public static SuperActivityManager getInstance() {
         return instance;
     }
 
-    private ActivityManager() {
+    private SuperActivityManager() {
     }
 
 

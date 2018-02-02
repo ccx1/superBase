@@ -1,4 +1,4 @@
-package com.example.administrator.viewutilslist.utilslist;
+package com.example.administrator.viewutilslist.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

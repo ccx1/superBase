@@ -77,12 +77,6 @@
 
    11.增加了SharedPreferences的处理工具类(需要完善..目前只有String处理以及boolean处理,添加方法改为异步处理)
 
-   原先想写流式布局,发现这里有个更好的,暂时先记录坐标
-
-   [比较喜欢的一个流式布局](https://github.com/hongyangAndroid/FlowLayout)
-
-   [一个比较好的indexRecycleView](https://github.com/YoKeyword/IndexableRecyclerView/tree/master/indexablerecyclerview/src/main/java/me/yokeyword/indexablerv)
-
    12.里面的baseActivity需要toolbar的android:paddingTop="@dimen/toolbar_padding_top"属性设置为在values-19下的dimens里面设置<dimen name="toolbar_padding_top">25dp</dimen>在默认下面设置为    <dimen name="toolbar_padding_top">0dp</dimen>
 
    附上toolbar代码
@@ -107,7 +101,6 @@
 
    将这个String返回结果进行写入文件即可,另外推荐一种直接显示pdf的开源框架
 
-   [pdfView](https://github.com/JoanZapata/android-pdfview)
 
 
 
@@ -115,7 +108,7 @@
 ### 后续大概会继续更新右侧导航类,自定义控件使用,工具类的完善,以及几个管理类别的处理
 
 
-### mark点
+#### mark点
 
 1. 原先想写流式布局,发现这里有个更好的,暂时先记录坐标
 
@@ -123,7 +116,7 @@
 
    [一个比较好的indexRecycleView](https://github.com/YoKeyword/IndexableRecyclerView/tree/master/indexablerecyclerview/src/main/java/me/yokeyword/indexablerv)
 
-
+   [pdfView开源框架](https://github.com/JoanZapata/android-pdfview)
 
 
 ## 这个项目大致先这样吧,未完待续...

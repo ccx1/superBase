@@ -81,6 +81,27 @@
 
    <https://github.com/hongyangAndroid/FlowLayout>
 
+   13.里面的baseActivity需要toolbar的android:paddingTop="@dimen/toolbar_padding_top"属性设置为在values-19下的dimens里面设置<dimen name="toolbar_padding_top">25dp</dimen>在默认下面设置为    <dimen name="toolbar_padding_top">0dp</dimen>
+
+   附上toolbar代码
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/toolbar_padding_top"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:showIn="@layout/activity_base">
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+
+
 ### 后续大概会继续更新右侧导航类,自定义控件使用,工具类的完善,以及几个管理类别的处理
 
 

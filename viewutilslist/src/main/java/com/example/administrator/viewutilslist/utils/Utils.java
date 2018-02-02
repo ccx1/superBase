@@ -5,6 +5,8 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.example.administrator.viewutilslist.BaseConstant;
+
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -24,37 +26,38 @@ import java.io.UnsupportedEncodingException;
 public class Utils {
 
     private static Context mContext;
-    public static  Handler sHandler;
+    private static  Handler sHandler;
+    private static Utils sInstance;
 
 
     private Utils() {
 
     }
 
-    public static void init(Context context) {
+    public void init(Context context) {
         init(context, false);
     }
 
-    public static void init(Context context, boolean isDebug) {
+    public void init(Context context, boolean isDebug) {
         mContext = context;
         initSharePreferences(mContext);
         initStaticToast(mContext);
-        initHandler();
         LogUtils.setIsDebug(true);
     }
 
-    private static void initHandler() {
+    public Handler HandlerManager() {
         if (sHandler == null) {
             sHandler = new Handler(Looper.getMainLooper());
         }
+        return sHandler;
     }
 
-    private static void initStaticToast(Context mContext) {
+    private void initStaticToast(Context mContext) {
         ToastUtils.init(mContext);
     }
 
-    private static void initSharePreferences(Context context) {
-        SharedPreferencesUtils.init(context, "congfig");
+    private void initSharePreferences(Context context) {
+        SharedPreferencesUtils.init(context, BaseConstant.DEFAULT_KEY);
     }
 
     public static void writeFile(byte[] bytes, File file, boolean append) {
@@ -118,4 +121,10 @@ public class Utils {
         return Build.VERSION.SDK_INT >= 21;
     }
 
+    public static Utils getInstance() {
+        if (sInstance == null) {
+            sInstance = new Utils();
+        }
+        return sInstance;
+    }
 }

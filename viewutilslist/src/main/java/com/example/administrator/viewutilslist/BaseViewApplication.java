@@ -20,7 +20,7 @@ public class BaseViewApplication extends Application {
     public void onCreate() {
         super.onCreate();
         /**
-         * 对activity的监听,做好统一管理,直接继承或者重写这个方法即可
+         * 对activity的监听,做好统一管理,直接继承或者重写这个方法即可,这个方法只在api14以上才有
          */
         registerActivityLifecycleCallbacks(new ActivityLifecycleListener() {
             @Override
@@ -34,8 +34,7 @@ public class BaseViewApplication extends Application {
             }
         });
 
-        Utils.init(this);
-
+        Utils.getInstance().init(this);
 
     }
 }

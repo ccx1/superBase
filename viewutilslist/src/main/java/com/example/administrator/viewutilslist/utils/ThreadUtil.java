@@ -16,7 +16,7 @@ public class ThreadUtil {
 
     public static void runOnUiThread(Runnable runnable) {
 
-        Utils.sHandler.post(runnable);
+        Utils.getInstance().HandlerManager().post(runnable);
 
     }
 

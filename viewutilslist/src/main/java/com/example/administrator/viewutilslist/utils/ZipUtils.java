@@ -19,7 +19,7 @@ import java.util.zip.ZipOutputStream;
 public class ZipUtils {
     private static final int BUFF_SIZE = 1048576;
 
-    public ZipUtils() {
+    private ZipUtils() {
     }
 
     public static void zip(File var0, File var1) throws IOException {

@@ -164,7 +164,6 @@ public class PermissionRequesUtls {
         intent.setData(uri);
         activity.startActivityForResult(intent, requestCode);
 
-
     }
 
     /**

@@ -1,7 +1,9 @@
 package com.example.administrator.viewutilslist;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -15,8 +17,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
+import com.example.administrator.viewutilslist.Receiver.NetBroadcastReceiver;
+import com.example.administrator.viewutilslist.utils.NetUtils;
 import com.example.administrator.viewutilslist.utils.PermissionRequesUtls;
+import com.example.administrator.viewutilslist.utils.common.LogUtils;
 import com.example.administrator.viewutilslist.utils.common.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -32,11 +36,12 @@ import java.util.List;
  * @创建时间 2018/2/2 16:28
  */
 
-public abstract class SuperBaseActivity extends AppCompatActivity implements PermissionRequesUtls.OnRequestPermissionsResultCallbacks {
+public abstract class SuperBaseActivity extends AppCompatActivity implements PermissionRequesUtls.OnRequestPermissionsResultCallbacks, NetBroadcastReceiver.onNetWorkStateEvent {
     private SparseArray<View> mSparseArray = new SparseArray<>();
     private long      mTimeMillis;
     private Toolbar   toolbar;
     public  ActionBar mActionBar;
+    private NetBroadcastReceiver mNetBroadcastReceiver = new NetBroadcastReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +69,11 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
 
         //初始化数据
         initData();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(mNetBroadcastReceiver,filter);
 
-
+        mNetBroadcastReceiver.setOnNetWorkStateEvent(this);
     }
 
     public Toolbar getToolbar() {
@@ -224,7 +232,6 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -240,7 +247,13 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
         return false;
     }
 
-
+    /**
+     * 权限处理
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -263,6 +276,9 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
         }
     }
 
+    /**
+     * eventbus处理
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -284,4 +300,57 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     protected void onMessageEvent(Object event) {
 
     }
+
+    /**
+     * @param netWorkState 状态值
+     */
+    @Override
+    public void onNetStateEvent(int netWorkState) {
+        switch (netWorkState) {
+            case NetUtils.NETWORK_NONE:
+                onNetWorkNone();
+                break;
+            case NetUtils.NETWORK_NONET:
+                onNetWorkNoNet();
+                break;
+            case NetUtils.NETWORK_MOBILE:
+                onNetWorkMobile();
+                break;
+            case NetUtils.NETWORK_WIFI:
+                onNetWorkWifi();
+                break;
+            case NetUtils.NETWORK_EMPTY:
+                onNetWorkEmpty();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void onNetWorkNoNet() {
+        LogUtils.i("onNetWorkNoNet");
+        System.out.println("onNetWorkNoNet");
+    }
+
+
+    public void onNetWorkWifi() {
+        LogUtils.i("onNetWorkWifi");
+        System.out.println("onNetWorkWifi");
+    }
+
+    public void onNetWorkMobile() {
+        LogUtils.i("onNetWorkMobile");
+        System.out.println("onNetWorkMobile");
+    }
+
+    public void onNetWorkEmpty() {
+        LogUtils.i("onNetWorkEmpty");
+        System.out.println("onNetWorkEmpty");
+    }
+
+    public void onNetWorkNone() {
+        LogUtils.i("onNetWorkNone");
+        System.out.println("onNetWorkNone");
+    }
+
 }

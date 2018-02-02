@@ -2,9 +2,12 @@ package com.example.administrator.viewutils;
 
 import android.widget.TextView;
 
-import com.example.administrator.viewutilslist.utils.common.FileUtils;
+import com.example.administrator.viewutilslist.view.NetworkStateView;
 
-public class MainActivity extends BaseActivity  {
+public class MainActivity extends BaseActivity {
+
+
+    private NetworkStateView mMNetworkStateView;
 
     @Override
     protected int BindLayout() {
@@ -14,11 +17,43 @@ public class MainActivity extends BaseActivity  {
     @Override
     protected void initView() {
         super.initView();
+
+
+        mMNetworkStateView = (NetworkStateView) $(R.id.nwsv);
+        mMNetworkStateView.showLoading();
         TextView view = (TextView) $(R.id.textview);
-        view.setText("aaa");
+    }
 
-        String pdfContent = FileUtils.readPdfContent2String(this, "aa.pdf");
 
+    @Override
+    public void onNetWorkWifi() {
+        super.onNetWorkWifi();
+        mMNetworkStateView.showSuccess();
+    }
+
+    @Override
+    public void onNetWorkMobile() {
+        super.onNetWorkMobile();
+        mMNetworkStateView.showSuccess();
+    }
+
+    @Override
+    public void onNetWorkEmpty() {
+        super.onNetWorkEmpty();
+        mMNetworkStateView.showEmpty();
+    }
+
+    @Override
+    public void onNetWorkNone() {
+        super.onNetWorkNone();
+        mMNetworkStateView.showNoNet();
+    }
+
+
+    @Override
+    public void onNetWorkNoNet() {
+        super.onNetWorkNoNet();
+        mMNetworkStateView.showSuccess();
     }
 
 

@@ -1,6 +1,6 @@
 package com.example.administrator.viewutilslist.utils.encode;
 
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
 
 import java.security.MessageDigest;
 import java.util.Arrays;
@@ -54,7 +54,7 @@ public class CryptoUtils {
             this.cipher.init(1, var6, var7);
             this.decipher = Cipher.getInstance("DESede/CBC/PKCS5Padding");
             this.decipher.init(2, var6, var7);
-            LogUtils.d("encrypt", "initital for DES");
+            LogUtil.d("encrypt", "initital for DES");
         } catch (Exception var5) {
             var5.printStackTrace();
         }
@@ -68,7 +68,7 @@ public class CryptoUtils {
             this.cipher.init(1, var1);
             this.decipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
             this.decipher.init(2, var1);
-            LogUtils.d("encrypt", "initital for AES");
+            LogUtil.d("encrypt", "initital for AES");
         } catch (Exception var2) {
             var2.printStackTrace();
         }

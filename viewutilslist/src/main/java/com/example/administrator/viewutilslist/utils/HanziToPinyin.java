@@ -2,7 +2,7 @@ package com.example.administrator.viewutilslist.utils;
 
 import android.text.TextUtils;
 
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class HanziToPinyin {
                     }
                 }
 
-                LogUtils.i("HanziToPinyin", "There is no Chinese collator, HanziToPinyin is disabled");
+                LogUtil.i("HanziToPinyin", "There is no Chinese collator, HanziToPinyin is disabled");
                 sInstance = new HanziToPinyin(true);
                 return sInstance;
             }
@@ -67,7 +67,7 @@ public class HanziToPinyin {
                 String var6 = Character.toString(var5);
                 int var7 = COLLATOR.compare(var1, var6);
                 if(var7 >= 0) {
-                    LogUtils.e("HanziToPinyin", "Internal error in Unihan table. The last string \"" + var1 + "\" is greater than current string \"" + var6 + "\".");
+                    LogUtil.e("HanziToPinyin", "Internal error in Unihan table. The last string \"" + var1 + "\" is greater than current string \"" + var6 + "\".");
                     return false;
                 }
 

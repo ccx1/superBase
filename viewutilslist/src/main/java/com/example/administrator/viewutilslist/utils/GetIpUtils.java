@@ -5,7 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.util.Log;
+
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -71,7 +72,7 @@ public class GetIpUtils {
      *
      * @return
      */
-    public static String GetNetIp() {
+    public synchronized static String GetNetIp() {
         URL infoUrl = null;
         final InputStream[] inStream = {null};
         try {
@@ -100,7 +101,7 @@ public class GetIpUtils {
                                 int end = strber.indexOf(" ", start + find_ip_tag.length());
                                 ip = strber.substring(start + find_ip_tag.length(), end);
                             }
-                            Log.e("print-", ip);
+                            LogUtil.e("print-", ip);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

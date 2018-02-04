@@ -6,9 +6,9 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.example.administrator.viewutilslist.BaseConstant;
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
 import com.example.administrator.viewutilslist.utils.common.SharedPreferencesUtils;
-import com.example.administrator.viewutilslist.utils.common.ToastUtils;
+import com.example.administrator.viewutilslist.utils.common.ToastUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
@@ -29,7 +29,7 @@ import java.io.UnsupportedEncodingException;
 public class Utils {
 
     private static Context mContext;
-    private static  Handler sHandler;
+    public static  Handler sHandler;
     private static Utils sInstance;
 
 
@@ -45,8 +45,8 @@ public class Utils {
         mContext = context;
         initSharePreferences(mContext);
         initStaticToast(mContext);
-        LogUtils.setIsDebug(true);
-        PathUtil.getInstance().initDirs("files",null,context);
+        LogUtil.setIsDebug(true);
+        PathUtil.getInstance().initDirs("cache",context);
     }
 
     public Handler HandlerManager() {
@@ -57,7 +57,7 @@ public class Utils {
     }
 
     private void initStaticToast(Context mContext) {
-        ToastUtils.init(mContext);
+        ToastUtil.init(mContext);
     }
 
     private void initSharePreferences(Context context) {

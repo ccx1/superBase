@@ -5,13 +5,13 @@ import android.content.Context;
 import android.widget.Toast;
 
 
-public class ToastUtils {
+public class ToastUtil {
 
     private static Toast   toast;
     @SuppressLint("StaticFieldLeak")
     private static Context mContext;
 
-    private ToastUtils(){
+    private ToastUtil(){
 
     }
 

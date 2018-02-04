@@ -9,9 +9,9 @@ import android.util.Log;
  * @创建时间 2017/9/4 14:25
  */
 
-public class LogUtils {
+public class LogUtil {
 
-    private LogUtils() {
+    private LogUtil() {
     }
 
     private static        boolean isDebug = true;
@@ -19,7 +19,7 @@ public class LogUtils {
 
 
     public static void setIsDebug(boolean isDebug) {
-        LogUtils.isDebug = isDebug;
+        LogUtil.isDebug = isDebug;
     }
 
     public static boolean isDebug() {

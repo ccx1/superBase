@@ -8,17 +8,7 @@
     android:orientation="vertical"
     tools:context="com.example.administrator.viewutils.MainActivity">
 
-    <com.example.administrator.viewutilslist.view.NetworkStateView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/nwsv"
-        app:emptyView="@layout/view_empty"
-        app:errorView="@layout/view_network_error"
-        app:loadingView="@layout/view_loading"
-        app:noNetworkView="@layout/view_no_network"
-        >
-
-    </com.example.administrator.viewutilslist.view.NetworkStateView>
+    <include layout="@layout/view_network"/>
 
     <TextView
         android:id="@+id/textview"

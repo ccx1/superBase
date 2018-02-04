@@ -103,7 +103,7 @@ public class NetworkStateView extends LinearLayout {
 
 
     public void showSuccess() {
-        mCurrentState = CurrentState.STATE_NETWORK_ERROR;
+        mCurrentState = CurrentState.STATE_SUCCESS;
         showViewByState(mCurrentState);
     }
 

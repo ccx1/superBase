@@ -6,7 +6,7 @@ import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
 import android.os.Environment;
 
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -43,13 +43,13 @@ public class EasyUtils {
             List var2 = var1.getRunningTasks(1);
             if(var2 != null && var2.size() >= 1) {
                 boolean var3 = var0.getPackageName().equalsIgnoreCase(((RunningTaskInfo)var2.get(0)).baseActivity.getPackageName());
-                LogUtils.d("utils", "app running in foregroud：" + var3);
+                LogUtil.d("utils", "app running in foregroud：" + var3);
                 return var3;
             } else {
                 return false;
             }
         } catch (SecurityException var4) {
-            LogUtils.d("EasyUtils", "Apk doesn't hold GET_TASKS permission");
+            LogUtil.d("EasyUtils", "Apk doesn't hold GET_TASKS permission");
             var4.printStackTrace();
             return false;
         }
@@ -62,7 +62,7 @@ public class EasyUtils {
             List var2 = var1.getRunningTasks(1);
             return var2 != null && var2.size() >= 1?((RunningTaskInfo)var2.get(0)).topActivity.getClassName():"";
         } catch (SecurityException var3) {
-            LogUtils.d("EasyUtils", "Apk doesn't hold GET_TASKS permission");
+            LogUtil.d("EasyUtils", "Apk doesn't hold GET_TASKS permission");
             var3.printStackTrace();
             return "";
         }
@@ -154,12 +154,12 @@ public class EasyUtils {
             return var5;
         }
 
-        if(LogUtils.isDebug()) {
+        if(LogUtil.isDebug()) {
             File var4 = new File(var1);
             DecimalFormat var22 = new DecimalFormat("#.##");
             double var6 = (double)var4.length() / (double)var0.length * 100.0D;
             double var8 = Double.valueOf(var22.format(var6)).doubleValue();
-            LogUtils.d("zip", "data size:" + var0.length + " zip file size:" + var4.length() + "zip file ratio%: " + var8);
+            LogUtil.d("zip", "data size:" + var0.length + " zip file size:" + var4.length() + "zip file ratio%: " + var8);
         }
 
         return true;

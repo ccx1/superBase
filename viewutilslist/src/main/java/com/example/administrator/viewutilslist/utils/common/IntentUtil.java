@@ -87,7 +87,7 @@ public class IntentUtil {
         String SDState = Environment.getExternalStorageState();
         if (SDState.equals(Environment.MEDIA_MOUNTED)) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// "android.media.action.IMAGE_CAPTURE"
-            LogUtils.i(TAG, "cameraUri.path------>" + cameraUri.getPath());
+            LogUtil.i(TAG, "cameraUri.path------>" + cameraUri.getPath());
             intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, cameraUri);
             context.startActivityForResult(intent, requestCode);
         } else {
@@ -261,7 +261,7 @@ public class IntentUtil {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);// 默认的跳转类型,它会重新创建一个新的Activity
         intent.setAction(android.content.Intent.ACTION_VIEW);
         // 调用getMIMEType()来取得MimeType
-        String type = FileUtils.getMIMEType(file);
+        String type = FileUtil.getMIMEType(file);
         // 设置intent的file与MimeType
         intent.setDataAndType(Uri.fromFile(file), type);
         context.startActivity(intent);
@@ -361,7 +361,7 @@ public class IntentUtil {
             }
             if (cameraUri != null) {
                 String path = cameraUri.getPath();
-                LogUtils.i(TAG, "path-->" + path);
+                LogUtil.i(TAG, "path-->" + path);
                 String filename = path.substring(path.lastIndexOf("/") + 1, path.length());
                 editText.setText(filename);
             }

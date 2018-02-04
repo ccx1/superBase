@@ -20,8 +20,9 @@ import android.view.WindowManager;
 import com.example.administrator.viewutilslist.Receiver.NetBroadcastReceiver;
 import com.example.administrator.viewutilslist.utils.NetUtils;
 import com.example.administrator.viewutilslist.utils.PermissionRequesUtls;
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
-import com.example.administrator.viewutilslist.utils.common.ToastUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
+import com.example.administrator.viewutilslist.utils.common.ToastUtil;
+import com.example.administrator.viewutilslist.view.NetworkStateView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -42,6 +43,7 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     private Toolbar   toolbar;
     public  ActionBar mActionBar;
     private NetBroadcastReceiver mNetBroadcastReceiver = new NetBroadcastReceiver();
+    private NetworkStateView mNetworkStateView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +149,7 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     public void onBackPressed() {
         if (isDoubleExit()) {
             if (System.currentTimeMillis() - mTimeMillis > 2000) {
-                ToastUtils.ToastShow("在按一次退出");
+                ToastUtil.ToastShow("在按一次退出");
                 mTimeMillis = System.currentTimeMillis();
             } else {
                 finish();
@@ -158,12 +160,12 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     }
 
     /**
-     * 解除黄油刀
      * 并且释放资源
      */
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unregisterReceiver(mNetBroadcastReceiver);
 
     }
 
@@ -262,17 +264,17 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms, boolean isAllGranted) {
-        LogUtils.e("同意:" + perms.size() + "个权限,isAllGranted=" + isAllGranted);
+        LogUtil.e("同意:" + perms.size() + "个权限,isAllGranted=" + isAllGranted);
         for (String perm : perms) {
-            LogUtils.e("同意:" + perm);
+            LogUtil.e("同意:" + perm);
         }
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms, boolean isAllDenied) {
-        LogUtils.e("拒绝:" + perms.size() + "个权限,isAllDenied=" + isAllDenied);
+        LogUtil.e("拒绝:" + perms.size() + "个权限,isAllDenied=" + isAllDenied);
         for (String perm : perms) {
-            LogUtils.e("拒绝:" + perm);
+            LogUtil.e("拒绝:" + perm);
         }
     }
 
@@ -328,29 +330,55 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     }
 
     public void onNetWorkNoNet() {
-        LogUtils.i("onNetWorkNoNet");
-        System.out.println("onNetWorkNoNet");
+        LogUtil.i("onNetWorkNoNet");
+        if (mNetworkStateView != null) {
+            mNetworkStateView.showNoNet();
+        }
     }
 
-
     public void onNetWorkWifi() {
-        LogUtils.i("onNetWorkWifi");
-        System.out.println("onNetWorkWifi");
+        LogUtil.i("onNetWorkWifi");
+        if (mNetworkStateView != null){
+            mNetworkStateView.showSuccess();
+        }
     }
 
     public void onNetWorkMobile() {
-        LogUtils.i("onNetWorkMobile");
-        System.out.println("onNetWorkMobile");
+        LogUtil.i("onNetWorkMobile");
+        if (mNetworkStateView != null){
+            mNetworkStateView.showSuccess();
+        }
     }
 
     public void onNetWorkEmpty() {
-        LogUtils.i("onNetWorkEmpty");
-        System.out.println("onNetWorkEmpty");
+        LogUtil.i("onNetWorkEmpty");
+        if (mNetworkStateView != null){
+            mNetworkStateView.showEmpty();
+        }
     }
 
     public void onNetWorkNone() {
-        LogUtils.i("onNetWorkNone");
-        System.out.println("onNetWorkNone");
+        LogUtil.i("onNetWorkNone");
+        if (mNetworkStateView != null){
+            mNetworkStateView.showError();
+        }
+    }
+
+
+    public void registerNetWorkStateView(NetworkStateView networkStateView){
+        this.mNetworkStateView = networkStateView;
+        if (mNetworkStateView != null) {
+            mNetworkStateView.showLoading();
+        }
+    }
+
+    protected void showShortToast(String s){
+        ToastUtil.ToastShow(s);
+    }
+
+
+    protected void showLongToast(String s){
+        ToastUtil.ToastLongTimeShow(s);
     }
 
 }

@@ -7,7 +7,7 @@ import com.example.administrator.viewutilslist.view.NetworkStateView;
 public class MainActivity extends BaseActivity {
 
 
-    private NetworkStateView mMNetworkStateView;
+    private NetworkStateView mNetworkStateView;
 
     @Override
     protected int BindLayout() {
@@ -17,44 +17,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-
-
-        mMNetworkStateView = (NetworkStateView) $(R.id.nwsv);
-        mMNetworkStateView.showLoading();
+        mNetworkStateView = (NetworkStateView) $(R.id.nwsv);
+        registerNetWorkStateView(mNetworkStateView);
         TextView view = (TextView) $(R.id.textview);
     }
-
-
-    @Override
-    public void onNetWorkWifi() {
-        super.onNetWorkWifi();
-        mMNetworkStateView.showSuccess();
-    }
-
-    @Override
-    public void onNetWorkMobile() {
-        super.onNetWorkMobile();
-        mMNetworkStateView.showSuccess();
-    }
-
-    @Override
-    public void onNetWorkEmpty() {
-        super.onNetWorkEmpty();
-        mMNetworkStateView.showEmpty();
-    }
-
-    @Override
-    public void onNetWorkNone() {
-        super.onNetWorkNone();
-        mMNetworkStateView.showNoNet();
-    }
-
-
-    @Override
-    public void onNetWorkNoNet() {
-        super.onNetWorkNoNet();
-        mMNetworkStateView.showSuccess();
-    }
-
-
 }

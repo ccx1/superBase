@@ -7,7 +7,7 @@ import android.os.Message;
 import android.os.SystemClock;
 import android.text.format.Time;
 
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,7 +58,7 @@ public class VoiceRecorder {
             this.isRecording = true;
             this.recorder.start();
         } catch (IOException var5) {
-            LogUtils.e("voice", "prepare() failed");
+            LogUtil.e("voice", "prepare() failed");
         }
 
         (new Thread(new Runnable() {
@@ -73,7 +73,7 @@ public class VoiceRecorder {
                             continue;
                         }
                     } catch (Exception var2) {
-                        LogUtils.e("voice", var2.toString());
+                        LogUtil.e("voice", var2.toString());
                     }
 
                     return;
@@ -81,7 +81,7 @@ public class VoiceRecorder {
             }
         })).start();
         this.startTime = (new Date()).getTime();
-        LogUtils.d("voice", "start voice recording to file:" + this.file.getAbsolutePath());
+        LogUtil.d("voice", "start voice recording to file:" + this.file.getAbsolutePath());
         return this.file == null?null:this.file.getAbsolutePath();
     }
 
@@ -117,7 +117,7 @@ public class VoiceRecorder {
                     return 401;
                 } else {
                     int var1 = (int)((new Date()).getTime() - this.startTime) / 1000;
-                    LogUtils.d("voice", "voice recording finished. seconds:" + var1 + " file length:" + this.file.length());
+                    LogUtil.d("voice", "voice recording finished. seconds:" + var1 + " file length:" + this.file.length());
                     return var1;
                 }
             } else {

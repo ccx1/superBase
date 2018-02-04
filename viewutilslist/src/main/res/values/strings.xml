@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">NetworkStateView</string>
 
     <!-- 加载状态相关 -->
     <string name="view_empty">没有数据~</string>

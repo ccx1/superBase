@@ -10,7 +10,8 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
+
 
 /**
  * Created by v_chicunxiang on 2018/2/2.
@@ -72,23 +73,23 @@ public class NetUtils {
             @SuppressLint("WrongConstant") ConnectivityManager var1 = (ConnectivityManager)var0.getSystemService("connectivity");
             NetworkInfo var2 = var1.getNetworkInfo(1);
             if(var2 != null && var2.isAvailable() && var2.isConnected()) {
-                LogUtils.d("net", "has wifi connection");
+                LogUtil.d("net", "has wifi connection");
                 return true;
             } else {
                 var2 = var1.getNetworkInfo(0);
                 if(var2 != null && var2.isAvailable() && var2.isConnected()) {
-                    LogUtils.d("net", "has mobile connection");
+                    LogUtil.d("net", "has mobile connection");
                     return true;
                 } else {
                     if(Build.VERSION.SDK_INT >= 13) {
                         var2 = var1.getNetworkInfo(9);
                         if(var2 != null && var2.isAvailable() && var2.isConnected()) {
-                            LogUtils.d("net", "has ethernet connection");
+                            LogUtil.d("net", "has ethernet connection");
                             return true;
                         }
                     }
 
-                    LogUtils.d("net", "no data connection");
+                    LogUtil.d("net", "no data connection");
                     return false;
                 }
             }
@@ -106,7 +107,7 @@ public class NetUtils {
         @SuppressLint("WrongConstant") ConnectivityManager var1 = (ConnectivityManager)var0.getSystemService("connectivity");
         NetworkInfo var2 = var1.getNetworkInfo(1);
         if(var2 != null && var2.isAvailable() && var2.isConnected()) {
-            LogUtils.d("net", "wifi is connected");
+            LogUtil.d("net", "wifi is connected");
             return true;
         } else {
             return false;
@@ -122,7 +123,7 @@ public class NetUtils {
         @SuppressLint("WrongConstant") ConnectivityManager var1 = (ConnectivityManager)var0.getSystemService("connectivity");
         NetworkInfo var2 = var1.getNetworkInfo(0);
         if(var2 != null && var2.isAvailable() && var2.isConnected()) {
-            LogUtils.d("net", "mobile is connected");
+            LogUtil.d("net", "mobile is connected");
             return true;
         } else {
             return false;
@@ -139,7 +140,7 @@ public class NetUtils {
             @SuppressLint("WrongConstant") ConnectivityManager var1 = (ConnectivityManager)var0.getSystemService("connectivity");
             NetworkInfo var2 = var1.getNetworkInfo(9);
             if(var2 != null && var2.isAvailable() && var2.isConnected()) {
-                LogUtils.d("net", "ethernet is connected");
+                LogUtil.d("net", "ethernet is connected");
                 return true;
             }
         }

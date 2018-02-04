@@ -1,8 +1,7 @@
 package com.example.administrator.viewutils;
 
 import com.example.administrator.viewutilslist.SuperBaseActivity;
-import com.example.administrator.viewutilslist.utils.common.LogUtils;
-import com.example.administrator.viewutilslist.utils.common.ToastUtils;
+import com.example.administrator.viewutilslist.utils.common.LogUtil;
 
 /**
  * Created by v_chicunxiang on 2018/2/2.
@@ -26,49 +25,41 @@ public class BaseActivity extends SuperBaseActivity {
 
     }
 
-    protected void showToast(String s){
-        ToastUtils.ToastShow(s);
-    }
-
-
-    protected void showLongToast(String s){
-        ToastUtils.ToastLongTimeShow(s);
-    }
 
     @Override
     protected void onStart() {
         super.onStart();
-        LogUtils.d("onStart");
+        LogUtil.d("onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtils.d("onResume");
+        LogUtil.d("onResume");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtils.d("onDestroy");
+        LogUtil.d("onDestroy");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtils.d("onPause");
+        LogUtil.d("onPause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtils.d("onStop");
+        LogUtil.d("onStop");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        LogUtils.d("onRestart");
+        LogUtil.d("onRestart");
     }
 
 

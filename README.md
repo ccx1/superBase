@@ -102,10 +102,37 @@
    将这个String返回结果进行写入文件即可,另外推荐一种直接显示pdf的开源框架
 
 
+   14. 对networkstateview进行优化,在superBaseActivity里面进行了regist的操作,增加根据网络进行判断.并且根据网络的情况进行页面切换,增加了有无线没网络的印象情况,但是这种情况需要请求网络才能进行验证,所以这个返回值暂时没有做实现,也就是netutil.nonetwork没有进行操作,可以将其放在网络请求方法中进行显示shownetwork
+
+    mNetworkStateView = (NetworkStateView) $(R.id.nwsv);
+    registerNetWorkStateView(mNetworkStateView);
+
+   这里另外附上netstateview的方法介绍
+
+      <com.example.administrator.viewutilslist.view.NetworkStateView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/nwsv"
+            app:emptyView="@layout/view_empty" //当出现没有数据的时候显示的界面,用户可以自己命名
+            app:errorView="@layout/view_network_error" //出现错误的界面
+            app:loadingView="@layout/view_loading" //加载中的界面
+            app:noNetworkView="@layout/view_no_network" //没有网络的界面
+            >
+
+      </com.example.administrator.viewutilslist.view.NetworkStateView>
+
+
+   可以通过include标签进行导入
+
+
+    <include layout="@layout/view_network"/>
+
+
+   15. 增加了Receiver的操作.在superbaseActivity里面进行了注册.直接进行使用几个网络辨析方法
 
 
 
-### 后续大概会继续更新右侧导航类,自定义控件使用,工具类的完善,以及几个管理类别的处理
+### 后续大概会继续更新左侧导航类,自定义控件使用,工具类的完善,以及几个管理类别的处理,以及RXJAVA的处理方式等等
 
 
 #### mark点

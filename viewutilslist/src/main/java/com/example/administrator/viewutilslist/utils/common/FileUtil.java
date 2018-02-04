@@ -43,11 +43,11 @@ import java.util.Date;
  * @创建时间 2018/2/2 15:21
  */
 
-public class FileUtils {
+public class FileUtil {
 
     public static String[] fileTypes = new String[]{"apk", "avi", "bmp", "chm", "dll", "doc", "docx", "dos", "gif", "html", "jpeg", "jpg", "movie", "mp3", "dat", "mp4", "mpe", "mpeg", "mpg", "pdf", "png", "ppt", "pptx", "rar", "txt", "wav", "wma", "wmv", "xls", "xlsx", "xml", "zip"};
 
-    public FileUtils() {
+    public FileUtil() {
     }
 
     @Deprecated
@@ -71,7 +71,7 @@ public class FileUtils {
             }
         }
 
-        FileUtils.MyComparator var8 = new FileUtils.MyComparator();
+        FileUtil.MyComparator var8 = new FileUtil.MyComparator();
         Collections.sort(var2, var8);
         Collections.sort(var3, var8);
         File[] var9 = new File[var2.size() + var3.size()];
@@ -282,7 +282,7 @@ public class FileUtils {
      * @return boolean
      */
     public static boolean checkFileDirectory(Context context) {
-        final File resDir = FileUtils.getDiskCacheDir(context);
+        final File resDir = FileUtil.getDiskCacheDir(context);
         if (!resDir.exists()) {
             return resDir.mkdirs();
         }
@@ -294,18 +294,18 @@ public class FileUtils {
      */
     public static void initCacheFile(Context context) {
 
-        if (LogUtils.isDebug()) {
-            LogUtils.v("initCacheFile");
+        if (LogUtil.isDebug()) {
+            LogUtil.v("initCacheFile");
         }
 
-        final String cacheDir = FileUtils.getDiskCacheDir(context).getAbsolutePath();
+        final String cacheDir = FileUtil.getDiskCacheDir(context).getAbsolutePath();
 
         final String imageDirPath = cacheDir + BaseConstant.CACHE_IMAGE_DIR;
         final File imageFileDir = new File(imageDirPath);
         if (!imageFileDir.exists()) {
             boolean isOk = imageFileDir.mkdirs();
-            if (LogUtils.isDebug()) {
-                LogUtils.v(imageDirPath + " 文件夹创建isOk" + isOk);
+            if (LogUtil.isDebug()) {
+                LogUtil.v(imageDirPath + " 文件夹创建isOk" + isOk);
             }
         }
 
@@ -313,8 +313,8 @@ public class FileUtils {
         final File audioFileDir = new File(audioDirPath);
         if (!audioFileDir.exists()) {
             boolean isOk = audioFileDir.mkdirs();
-            if (LogUtils.isDebug()) {
-                LogUtils.v(audioDirPath + " 文件夹创建isOk" + isOk);
+            if (LogUtil.isDebug()) {
+                LogUtil.v(audioDirPath + " 文件夹创建isOk" + isOk);
             }
         }
 
@@ -322,8 +322,8 @@ public class FileUtils {
         final File messageFileDir = new File(messageDirPath);
         if (!messageFileDir.exists()) {
             boolean isOk = messageFileDir.mkdirs();
-            if (LogUtils.isDebug()) {
-                LogUtils.v(imageDirPath + " 文件夹创建isOk" + isOk);
+            if (LogUtil.isDebug()) {
+                LogUtil.v(imageDirPath + " 文件夹创建isOk" + isOk);
             }
         }
     }
@@ -355,8 +355,8 @@ public class FileUtils {
                     sDest.append(data);
                 }
             } catch (IOException ioex) {
-                if (LogUtils.isDebug()) {
-                    LogUtils.e(ioex.getMessage());
+                if (LogUtil.isDebug()) {
+                    LogUtil.e(ioex.getMessage());
                 }
             } finally {
                 is.close();
@@ -365,11 +365,11 @@ public class FileUtils {
                 br = null;
             }
         } catch (Exception ex) {
-            if (LogUtils.isDebug()) {
-                LogUtils.e(ex.getMessage());
+            if (LogUtil.isDebug()) {
+                LogUtil.e(ex.getMessage());
             }
         } catch (OutOfMemoryError ex) {
-            if (LogUtils.isDebug()) {
+            if (LogUtil.isDebug()) {
                 ex.printStackTrace();
             }
         }
@@ -401,8 +401,8 @@ public class FileUtils {
         } catch(FileNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e) {
-            if (LogUtils.isDebug()) {
-                LogUtils.e(e.getMessage());
+            if (LogUtil.isDebug()) {
+                LogUtil.e(e.getMessage());
             }
         }
         return result;
@@ -448,19 +448,19 @@ public class FileUtils {
                     fos.flush();
                     bFlag = true;
                 } catch (IOException ioex) {
-                    if (LogUtils.isDebug()) {
-                        LogUtils.e(ioex.getMessage());
+                    if (LogUtil.isDebug()) {
+                        LogUtil.e(ioex.getMessage());
                     }
                 } finally {
                     fos.close();
                     buffer = null;
                 }
             } catch (Exception ex) {
-                if (LogUtils.isDebug()) {
-                    LogUtils.e(ex.getMessage());
+                if (LogUtil.isDebug()) {
+                    LogUtil.e(ex.getMessage());
                 }
             } catch (OutOfMemoryError o) {
-                if (LogUtils.isDebug()) {
+                if (LogUtil.isDebug()) {
                     o.printStackTrace();
                 }
             }
@@ -476,9 +476,9 @@ public class FileUtils {
      * @return
      */
     public static boolean rename(String filePath, String newFilePath) {
-        if (LogUtils.isDebug()) {
-            LogUtils.e("filePath " + filePath);
-            LogUtils.e("newFilePath " + newFilePath);
+        if (LogUtil.isDebug()) {
+            LogUtil.e("filePath " + filePath);
+            LogUtil.e("newFilePath " + newFilePath);
         }
 
         if (!TextUtils.isEmpty(filePath)) {
@@ -498,14 +498,14 @@ public class FileUtils {
      * @return
      */
     public static boolean deleteFile(String filePath) {
-        if (LogUtils.isDebug()) {
-            LogUtils.e("deleteFile path " + filePath);
+        if (LogUtil.isDebug()) {
+            LogUtil.e("deleteFile path " + filePath);
         }
 
         if (!TextUtils.isEmpty(filePath)) {
             final File file = new File(filePath);
-            if (LogUtils.isDebug()) {
-                LogUtils.e("deleteFile path exists " + file.exists());
+            if (LogUtil.isDebug()) {
+                LogUtil.e("deleteFile path exists " + file.exists());
             }
             if (file.exists()) {
                 return file.delete();
@@ -543,8 +543,8 @@ public class FileUtils {
         }
 
         if (!rslt) {
-            if (LogUtils.isDebug()) {
-                LogUtils.d("无法删除:" + file.getName());
+            if (LogUtil.isDebug()) {
+                LogUtil.d("无法删除:" + file.getName());
             }
             return;
         }
@@ -600,8 +600,8 @@ public class FileUtils {
                 }
             }
         } catch (Exception ex) {
-            if (LogUtils.isDebug()) {
-                LogUtils.e(ex.getMessage());
+            if (LogUtil.isDebug()) {
+                LogUtil.e(ex.getMessage());
             }
             return false;
         }
@@ -640,8 +640,8 @@ public class FileUtils {
                 file.delete();
             }
         } catch (Exception ex) {
-            if (LogUtils.isDebug()) {
-                LogUtils.e(ex.getMessage());
+            if (LogUtil.isDebug()) {
+                LogUtil.e(ex.getMessage());
             }
             return false;
         }
@@ -779,18 +779,18 @@ public class FileUtils {
     public static long copyFile(final File srcFile, final File destDir, String newFileName) {
         long copySizes = 0;
         if (!srcFile.exists()) {
-            if (LogUtils.isDebug()) {
-                LogUtils.d("源文件不存在");
+            if (LogUtil.isDebug()) {
+                LogUtil.d("源文件不存在");
             }
             copySizes = -1;
         } else if (!destDir.exists()) {
-            if (LogUtils.isDebug()) {
-                LogUtils.d("目标目录不存在");
+            if (LogUtil.isDebug()) {
+                LogUtil.d("目标目录不存在");
             }
             copySizes = -1;
         } else if (newFileName == null) {
-            if (LogUtils.isDebug()) {
-                LogUtils.d("文件名为null");
+            if (LogUtil.isDebug()) {
+                LogUtil.d("文件名为null");
             }
             copySizes = -1;
         } else {
@@ -913,8 +913,8 @@ public class FileUtils {
 
         final long blockSize = getFileSize(file);
 
-        if (LogUtils.isDebug()) {
-            LogUtils.d("getAutoFileOrFilesSize 文件大小：" + blockSize);
+        if (LogUtil.isDebug()) {
+            LogUtil.d("getAutoFileOrFilesSize 文件大小：" + blockSize);
         }
 
         return FormetFileSize(blockSize);
@@ -1036,7 +1036,7 @@ public class FileUtils {
      */
     public static String readPdfContent2String(Context context,String pdfName){
         try {
-            File file = FileUtils.fileFromAsset(context, pdfName);
+            File file = FileUtil.fileFromAsset(context, pdfName);
             String s = readPdfContent(file.getAbsolutePath());
             return s;
         } catch (IOException e) {

@@ -40,6 +40,10 @@ public class PathUtil {
         return instance;
     }
 
+    public void initDirs(String fileDir, Context context) {
+        initDirs(fileDir,null,context);
+    }
+
     public void initDirs(String fileDir, String path, Context context) {
         String var4 = context.getPackageName();
         pathPrefix = "/Android/data/" + var4 + "/";

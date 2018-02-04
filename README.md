@@ -1,24 +1,8 @@
-## ViewUtilsList
+## superBase
 一个开发初期所需要使用的工具类集合
 
 ### android
 
-### maven
-
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-
-### build.gradle
-
-	dependencies {
-	        compile 'com.github.ci250454344:ViewUtilsList:v1.0.1'
-	}
-  
-  
    ##主要是针对了几个特殊的地方.内部做了application的activity的监听,只用继承ViewUtilsApplication,就可以将activity做成监听,这个activity的管理器还做了可以直接关闭所有的activity的操作,
 
 

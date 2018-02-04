@@ -1,7 +1,7 @@
 package com.example.administrator.viewutils;
 
-import com.example.administrator.viewutilslist.SuperBaseActivity;
-import com.example.administrator.viewutilslist.utils.common.LogUtil;
+import com.example.administrator.superbase.SuperBaseActivity;
+import com.example.administrator.superbase.utils.common.LogUtil;
 
 /**
  * Created by v_chicunxiang on 2018/2/2.

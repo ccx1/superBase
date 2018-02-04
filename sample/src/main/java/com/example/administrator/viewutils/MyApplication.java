@@ -1,6 +1,6 @@
 package com.example.administrator.viewutils;
 
-import com.example.administrator.viewutilslist.SuperBaseApplication;
+import com.example.administrator.superbase.SuperBaseApplication;
 
 /**
  * Created by Administrator on 2017/9/22.

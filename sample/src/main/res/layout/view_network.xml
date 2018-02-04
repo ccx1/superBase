@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.administrator.viewutilslist.view.NetworkStateView
+<com.example.administrator.superbase.view.NetworkStateView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,4 +12,4 @@
     app:noNetworkView="@layout/view_no_network"
     >
 
-</com.example.administrator.viewutilslist.view.NetworkStateView>
+</com.example.administrator.superbase.view.NetworkStateView>

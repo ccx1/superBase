@@ -2,7 +2,7 @@ package com.example.administrator.viewutils;
 
 import android.widget.TextView;
 
-import com.example.administrator.viewutilslist.view.NetworkStateView;
+import com.example.administrator.superbase.view.NetworkStateView;
 
 public class MainActivity extends BaseActivity {
 

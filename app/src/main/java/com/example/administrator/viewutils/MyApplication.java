@@ -18,7 +18,6 @@ public class MyApplication extends SuperBaseApplication {
         super.onCreate();
         appContext = this;
 
-
     }
 
 

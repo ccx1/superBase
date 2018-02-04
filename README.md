@@ -130,10 +130,25 @@
 
    15. 增加了Receiver的操作.在superbaseActivity里面进行了注册.直接进行使用几个网络辨析方法
 
+   16. 增加了对64K方法文件的处理.在superBaseApplication里面进行处理
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 
 
 ### 后续大概会继续更新左侧导航类,自定义控件使用,工具类的完善,以及几个管理类别的处理,以及RXJAVA的处理方式等等
 
+#### 容易忘记的点,人需要做笔记
+
+    Application-> attachBaseContext ();
+
+    ContentProvider:onCreate()
+
+    Application:onCreate()
 
 #### mark点
 

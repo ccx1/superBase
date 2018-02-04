@@ -6,6 +6,9 @@ group='com.github.ci250454344'
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
 
     defaultConfig {
         minSdkVersion 16
@@ -30,4 +33,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     implementation files('Libs/eventbus-3.1.1.jar')
     implementation files('Libs/jxl.jar')
+    implementation files('Libs/iTextpdf.jar')
+    compile 'com.android.support:multidex:1.0.1'
 }

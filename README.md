@@ -25,10 +25,11 @@
    然后new出一个监听的管理器即可.
 
 
-
 ### 内部工具类的介绍.
    1.ThreadUtil,主要封装了线程池,对线程的统一管理吧,是两个方法 runOnSubThread(Runnable runnable) 以及一个 runOnUiThread(Runnable runnable) 来对线程之间子线程和主线程的切换 
+   
    2.ImageUtils 主要介绍几个方法,一个是将bitmap转换成String值进行传递,还有一个是将String转换成Bitmap值进行传递的.
+   
    3.MD5 MD5加密工具类,主要是复杂的代码.写起来有点麻烦,抄了一个工具类进行,直接 MD5.md5("") 直接进行加密
    
    
@@ -140,6 +141,13 @@
     ContentProvider:onCreate()
 
     Application:onCreate()
+    
+    
+##### 小bug记录,下次修复
+    
+   1. networkstateview的子view处理方法问题.
+   2. 工具类的方法冗余
+   3. baseActivity的封装过于繁多.需要修复多次继承的问题
 
 #### mark点
 

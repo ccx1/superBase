@@ -30,4 +30,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support:multidex:1.0.2'
+    compile ('io.socket:socket.io-client:0.8.3') {
+        // excluding org.json which is provided by Android
+        exclude group: 'org.json', module: 'json'
+    }
 }

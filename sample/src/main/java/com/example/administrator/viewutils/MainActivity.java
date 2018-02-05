@@ -4,6 +4,9 @@ import android.widget.TextView;
 
 import com.example.administrator.superbase.view.NetworkStateView;
 
+import java.net.URISyntaxException;
+
+import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
@@ -34,7 +37,15 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        String CHAT_SERVER_URL = "http://localhost:8080/";
+        try {
+            mSocket = IO.socket(CHAT_SERVER_URL);
+            mSocket.on(Socket.EVENT_CONNECT,connect);
+            mSocket.connect();
+            mSocket.emit("one push","aaaaa");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -42,6 +53,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        mSocket.disconnect();
+        mSocket.off(Socket.EVENT_CONNECT, connect);
     }
 }

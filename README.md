@@ -3,7 +3,7 @@
 
 ### android
 
-   ##主要是针对了几个特殊的地方.内部做了application的activity的监听,只用继承ViewUtilsApplication,就可以将activity做成监听,这个activity的管理器还做了可以直接关闭所有的activity的操作,
+   ##主要是针对了几个特殊的地方.内部做了application的activity的监听,SuperBaseApplication,就可以将activity做成监听,这个activity的管理器还做了可以直接关闭所有的activity的操作,
 
 
         /**
@@ -121,12 +121,19 @@
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
-
-
+   
 
 ### 后续大概会继续更新左侧导航类,自定义控件使用,工具类的完善,以及几个管理类别的处理,以及RXJAVA的处理方式等等
 
-#### 容易忘记的点,人需要做笔记
+#### 后续完善
+
+   1. socket.io以及websocket的框架搭建.
+   2. rxjava的框架搭建
+   3. 自定义控件的完善
+
+#### 人需要做笔记
+
+##### application启动顺序
 
     Application-> attachBaseContext ();
 

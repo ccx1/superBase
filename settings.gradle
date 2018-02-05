@@ -1,1 +1,1 @@
-include ':sample', ':superbase'
+include ':sample', ':superbase', ':app'

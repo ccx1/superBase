@@ -71,10 +71,21 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
 
         //初始化数据
         initData();
+
+        //初始化注册
+        initRegister();
+
+        Intent intent = new Intent();
+        // 进入页面之后的判断网络情况
+        intent.setAction(BaseConstant.ACTION_ONE_SEND);
+        sendBroadcast(intent);
+    }
+
+    private void initRegister() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(mNetBroadcastReceiver,filter);
-
+        filter.addAction(BaseConstant.ACTION_ONE_SEND);
+        registerReceiver(mNetBroadcastReceiver, filter);
         mNetBroadcastReceiver.setOnNetWorkStateEvent(this);
     }
 
@@ -338,46 +349,46 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
 
     public void onNetWorkWifi() {
         LogUtil.i("onNetWorkWifi");
-        if (mNetworkStateView != null){
+        if (mNetworkStateView != null) {
             mNetworkStateView.showSuccess();
         }
     }
 
     public void onNetWorkMobile() {
         LogUtil.i("onNetWorkMobile");
-        if (mNetworkStateView != null){
+        if (mNetworkStateView != null) {
             mNetworkStateView.showSuccess();
         }
     }
 
     public void onNetWorkEmpty() {
         LogUtil.i("onNetWorkEmpty");
-        if (mNetworkStateView != null){
+        if (mNetworkStateView != null) {
             mNetworkStateView.showEmpty();
         }
     }
 
     public void onNetWorkNone() {
         LogUtil.i("onNetWorkNone");
-        if (mNetworkStateView != null){
+        if (mNetworkStateView != null) {
             mNetworkStateView.showError();
         }
     }
 
 
-    public void registerNetWorkStateView(NetworkStateView networkStateView){
+    public void registerNetWorkStateView(NetworkStateView networkStateView) {
         this.mNetworkStateView = networkStateView;
         if (mNetworkStateView != null) {
             mNetworkStateView.showLoading();
         }
     }
 
-    protected void showShortToast(String s){
+    protected void showShortToast(String s) {
         ToastUtil.ToastShow(s);
     }
 
 
-    protected void showLongToast(String s){
+    protected void showLongToast(String s) {
         ToastUtil.ToastLongTimeShow(s);
     }
 

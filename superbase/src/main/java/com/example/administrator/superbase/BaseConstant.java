@@ -16,4 +16,5 @@ public class BaseConstant {
     public static final String CACHE_IMAGE_DIR    = "imagecache";
     public static final String CACHE_AUDIO_DIR       = "cache_audio_dir";
     public static final String CACHE_MESSAGE_DIR = "cache_message_dir";
+    public static final String ACTION_ONE_SEND = "action_one_send";
 }

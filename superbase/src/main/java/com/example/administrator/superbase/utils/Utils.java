@@ -47,6 +47,7 @@ public class Utils {
         initStaticToast(mContext);
         LogUtil.setIsDebug(true);
         PathUtil.getInstance().initDirs("cache",context);
+        NetUtils.getInstance().init(context);
     }
 
     public Handler HandlerManager() {

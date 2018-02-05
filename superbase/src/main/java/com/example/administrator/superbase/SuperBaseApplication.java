@@ -21,9 +21,8 @@ public class SuperBaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        /**
-         * 对activity的监听,做好统一管理,直接继承或者重写这个方法即可,这个方法只在api14以上才有
-         */
+
+        // 对activity的监听,做好统一管理,直接继承或者重写这个方法即可,这个方法只在api14以上才有
         registerActivityLifecycleCallbacks(new ActivityLifecycleListener() {
             @Override
             public void onActivityStartedListerner(Activity activity) {
@@ -40,7 +39,10 @@ public class SuperBaseApplication extends Application {
 
     }
 
-
+    /**
+     * 分包工具,防止64K加载
+     * @param base
+     */
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);

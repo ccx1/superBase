@@ -122,6 +122,11 @@
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
+    
+    
+   17. 在demo里面加入了dagger的module注入,并且发现了一篇挺好的dagger2的文章,写的非常好(我一直在想只有我一人觉得dagger有点难用吗)
+   
+   [dagger2的框架注入](https://www.jianshu.com/p/47c7306b2994)
    
 
 ### 后续大概会继续更新左侧导航类,自定义控件使用,工具类的完善,以及几个管理类别的处理,以及RXJAVA的处理方式等等

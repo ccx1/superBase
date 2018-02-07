@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
@@ -116,7 +117,7 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
      * @param resId
      * @return
      */
-    protected <T extends View> T $(int resId) {
+    protected <T extends View> T $(@IdRes int resId) {
         return (T) super.findViewById(resId);
     }
 

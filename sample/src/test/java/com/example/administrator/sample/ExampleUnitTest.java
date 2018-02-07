@@ -1,4 +1,4 @@
-package com.example.administrator.viewutils;
+package com.example.administrator.sample;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.administrator.viewutils;
+package com.example.administrator.sample;
 
 import com.example.administrator.superbase.SuperBaseActivity;
 import com.example.administrator.superbase.utils.common.LogUtil;

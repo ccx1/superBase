@@ -6,10 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/nwsv"
-    app:emptyView="@layout/view_empty"
-    app:errorView="@layout/view_network_error"
-    app:loadingView="@layout/view_loading"
-    app:noNetworkView="@layout/view_no_network"
+    app:emptyView="@layout/view_empty_default"
+    app:errorView="@layout/view_network_error_default"
+    app:loadingView="@layout/view_loading_default"
+    app:noNetworkView="@layout/view_no_network_default"
+    tools:visibility="gone"
     >
 
 </com.example.administrator.superbase.view.NetworkStateView>

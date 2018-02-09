@@ -16,4 +16,11 @@
         <attr name="noNetworkView" format="reference" />
 
     </declare-styleable>
+
+    <!-- 底部导航栏View -->
+    <declare-styleable name="BottomNavigationBar">
+        <!-- 加载中的布局id -->
+        <attr name="tab_xmlRes" format="reference" />
+
+    </declare-styleable>
 </resources>

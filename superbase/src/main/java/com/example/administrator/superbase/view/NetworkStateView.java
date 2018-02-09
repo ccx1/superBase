@@ -51,10 +51,10 @@ public class NetworkStateView extends LinearLayout {
         this.context = context;
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NetworkStateView,defStyleAttr,0);
 
-        mLoadingViewId = typedArray.getResourceId(R.styleable.NetworkStateView_loadingView, R.layout.view_loading);
-        mErrorViewId = typedArray.getResourceId(R.styleable.NetworkStateView_errorView, R.layout.view_network_error);
-        mNoNetworkViewId = typedArray.getResourceId(R.styleable.NetworkStateView_noNetworkView, R.layout.view_no_network);
-        mEmptyViewId = typedArray.getResourceId(R.styleable.NetworkStateView_emptyView, R.layout.view_empty);
+        mLoadingViewId = typedArray.getResourceId(R.styleable.NetworkStateView_loadingView, R.layout.view_loading_default);
+        mErrorViewId = typedArray.getResourceId(R.styleable.NetworkStateView_errorView, R.layout.view_network_error_default);
+        mNoNetworkViewId = typedArray.getResourceId(R.styleable.NetworkStateView_noNetworkView, R.layout.view_no_network_default);
+        mEmptyViewId = typedArray.getResourceId(R.styleable.NetworkStateView_emptyView, R.layout.view_empty_default);
 
         typedArray.recycle();
 
@@ -62,7 +62,6 @@ public class NetworkStateView extends LinearLayout {
 
         params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         setBackgroundColor(Color.WHITE);
-
     }
 
     public void showError() {

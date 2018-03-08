@@ -160,7 +160,7 @@
 
    [比较喜欢的一个流式布局](https://github.com/hongyangAndroid/FlowLayout)
 
-   [一个比较好的indexRecycleView](https://github.com/YoKeyword/IndexableRecyclerView/tree/master/indexablerecyclerview/src/main/java/me/yokeyword/indexablerv)
+   [一个比较好的indexRecycleView](https://github.com/YoKeyword/IndexableRecyclerView)
 
    [pdfView开源框架](https://github.com/JoanZapata/android-pdfview)
 

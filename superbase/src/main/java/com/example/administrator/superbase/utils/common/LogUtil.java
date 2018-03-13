@@ -67,8 +67,4 @@ public class LogUtil {
             Log.v(tag, msg);
         }
     }
-
-
-
-
 }

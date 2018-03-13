@@ -20,11 +20,5 @@
             android:layout_height="wrap_content"/>
     </FrameLayout>
 
-    <com.example.administrator.superbase.view.bottom.BottomNavigationView
-        android:layout_width="match_parent"
-        android:minHeight="58dp"
-        android:layout_height="wrap_content"
-        app:tab_xmlRes="@xml/" />
-
 
 </LinearLayout>

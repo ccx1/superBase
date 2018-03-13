@@ -8,7 +8,7 @@ package com.example.administrator.superbase;
  */
 
 public class BaseConstant {
-    public static final String DEFAULT_KEY        = "congfig";
+    public static final String DEFAULT_KEY        = "config";
     public static final String DEFAULT_CHARSET    = "UTF-8";
     public static final String METHOD_POST        = "POST";
     public static final String METHOD_GET         = "GET";

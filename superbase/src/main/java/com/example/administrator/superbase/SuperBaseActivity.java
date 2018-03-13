@@ -1,5 +1,6 @@
 package com.example.administrator.superbase;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -216,14 +217,14 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     /**
      * [页面跳转] *
      */
-    public void startActivity(Class<?> clz) {
+    public void startActivity(Class<? extends Activity> clz) {
         startActivity(new Intent(SuperBaseActivity.this, clz));
     }
 
     /**
      * [携带数据的页面跳转] *
      */
-    public void startActivity(Class<?> clz, Bundle bundle) {
+    public void startActivity(Class<? extends Activity> clz, Bundle bundle) {
         Intent intent = new Intent();
         intent.setClass(this, clz);
         if (bundle != null) {
@@ -236,7 +237,7 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     /**
      * [含有Bundle通过Class打开编辑界面] *
      */
-    public void startActivityForResult(Class<?> cls, Bundle bundle, int requestCode) {
+    public void startActivityForResult(Class<? extends Activity> cls, Bundle bundle, int requestCode) {
         Intent intent = new Intent();
         intent.setClass(this, cls);
         if (bundle != null) {

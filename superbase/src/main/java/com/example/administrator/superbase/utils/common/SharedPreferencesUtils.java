@@ -3,6 +3,8 @@ package com.example.administrator.superbase.utils.common;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.Set;
+
 
 /**
  * Created by Administrator on 2017-06-02.
@@ -16,15 +18,14 @@ import android.content.SharedPreferences;
 public class SharedPreferencesUtils {
 
     private static SharedPreferences sp;
-    private static Context mContext;
-    private static String[] mNames;
+    private static Context           mContext;
+    private static String[]          mNames;
 
 
-    public static void init(Context context,String... names) {
+    public static void init(Context context, String... names) {
         mContext = context;
         mNames = names;
     }
-
     /**
      * reset Names
      */
@@ -32,47 +33,88 @@ public class SharedPreferencesUtils {
         SharedPreferencesUtils.mNames = mNames;
     }
 
-    public static void saveBoolean(int namesKey, String key, boolean value) {
+    public static void put(int namesKey, String key, Object obj) {
 
-        if (sp == null) {
-            sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
+        sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor edit = sp.edit();
+
+        if (obj instanceof String) {
+            edit.putString(key, (String) obj);
+        } else if (obj instanceof Integer) {
+            edit.putInt(key, (Integer) obj);
+        } else if (obj instanceof Float) {
+            edit.putFloat(key, (Float) obj);
+        } else if (obj instanceof Long) {
+            edit.putLong(key, (Long) obj);
+        } else if (obj instanceof Boolean) {
+            edit.putBoolean(key, (Boolean) obj);
+        } else {
+            edit.putString(key, obj.toString());
         }
-        sp.edit().putBoolean(key, value).apply();
+
+        edit.apply();
 
     }
 
+    public static String get(int namesKey, String key, String defValue) {
 
-    public static boolean getBoolean(int namesKey,String key, boolean defValue) {
-
-
-        if (sp == null) {
-            sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
-        }
-
-
-        return sp.getBoolean(key, defValue);
-
-    }
-
-
-    public static void saveString(int namesKey,String key, String value) {
-
-
-        if (sp == null) {
-            sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
-        }
-        sp.edit().putString(key, value).apply();
-
-    }
-
-
-    public static String getString(int namesKey,String key, String defValue) {
-
-        if (sp == null) {
-            sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
-        }
+        sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
 
         return sp.getString(key, defValue);
-
     }
+
+    public static int get(int namesKey, String key, int defValue) {
+
+        sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
+
+        return sp.getInt(key, defValue);
+    }
+
+    public static boolean get(int namesKey, String key, boolean defValue) {
+
+        sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
+
+        return sp.getBoolean(key, defValue);
+    }
+
+    public static float get(int namesKey, String key, float defValue) {
+
+        sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
+
+        return sp.getFloat(key, defValue);
+    }
+
+    public static long get(int namesKey, String key, long defValue) {
+
+        sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
+
+        return sp.getLong(key, defValue);
+    }
+
+    public static Set<String> get(int namesKey, String key, Set<String> defValue) {
+
+        sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
+        return sp.getStringSet(key, defValue);
+    }
+
+
+    public static void clear(int namesKey) {
+        sp = mContext.getSharedPreferences(mNames[namesKey], Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.clear();
+        edit.apply();
+    }
+
+
+    public static void clearAll() {
+        for (String name : mNames) {
+            sp = mContext.getSharedPreferences(name, Context.MODE_PRIVATE);
+            SharedPreferences.Editor edit = sp.edit();
+            edit.clear();
+            edit.apply();
+        }
+    }
+
+
 }

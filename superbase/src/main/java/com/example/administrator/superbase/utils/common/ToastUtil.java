@@ -24,6 +24,7 @@ public class ToastUtil {
         if (toast == null) {
             toast = Toast.makeText(mContext, msg, Toast.LENGTH_SHORT);
         }
+        toast.setDuration(Toast.LENGTH_SHORT);
         toast.setText(msg);
         toast.show();
 
@@ -34,6 +35,7 @@ public class ToastUtil {
         if (toast == null) {
             toast = Toast.makeText(mContext, msg, Toast.LENGTH_LONG);
         }
+        toast.setDuration(Toast.LENGTH_LONG);
         toast.setText(msg);
         toast.show();
     }

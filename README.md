@@ -153,6 +153,10 @@
    1. networkstateview的子view处理方法问题.
    2. 工具类的方法冗余
    3. baseActivity的封装过于繁多.需要修复多次继承的问题
+   
+#### 第三方库的记录
+    
+   1. [websocket](https://github.com/TooTallNate/Java-WebSocket) 
 
 #### mark点
 
@@ -163,7 +167,9 @@
    [一个比较好的indexRecycleView](https://github.com/YoKeyword/IndexableRecyclerView)
 
    [pdfView开源框架](https://github.com/JoanZapata/android-pdfview)
-
+   
+   [写的不错的博客-关于webSocket](https://www.cnblogs.com/wlfcolin/p/5193583.html)
+   
 
 ## 这个项目大致先这样吧,未完待续...
 

@@ -20,5 +20,6 @@
         </activity>
         <receiver android:name="com.example.administrator.superbase.Receiver.NetBroadcastReceiver"/>
 
+        <service android:name="com.example.administrator.superbase.server.BaseService"/>
     </application>
 </manifest>

@@ -1,6 +1,10 @@
 package com.example.administrator.sample;
 
 import com.example.administrator.superbase.SuperBaseApplication;
+import com.example.administrator.superbase.server.BaseIMClient;
+import com.example.administrator.superbase.server.BaseService;
+
+import java.net.URI;
 
 /**
  * Created by Administrator on 2017/9/22.
@@ -17,7 +21,28 @@ public class MyApplication extends SuperBaseApplication {
     public void onCreate() {
         super.onCreate();
         appContext = this;
+        BaseIMClient.getInstance().init(this,"");
+        BaseIMClient.getInstance().chatManager().addMessageListener(new BaseService.OnSocketStateListener() {
+            @Override
+            public void onConnect(URI uri) {
 
+            }
+
+            @Override
+            public void onMessage(URI uri, String msg) {
+
+            }
+
+            @Override
+            public void onClose(URI uri, int code, String msg) {
+
+            }
+
+            @Override
+            public void onError(Exception e) {
+
+            }
+        });
     }
 
 

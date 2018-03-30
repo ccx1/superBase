@@ -22,5 +22,6 @@ public class MainActivity extends BaseActivity {
         super.registerNetWorkStateView(mNetworkStateView);
         mView = (TextView) $(R.id.textview);
 
+
     }
 }

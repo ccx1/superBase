@@ -79,7 +79,7 @@ public class Utils {
         }
     }
 
-    public static String readFileToString(String file) {
+    public static String readFileToString(File file) {
         FileInputStream fileInputStream = null;
         ByteArrayOutputStream byteArrayOutputStream = null;
         String result = null;
@@ -106,8 +106,8 @@ public class Utils {
     }
 
     private static void closeStream(Closeable... c) {
-        for (int i = 0; i < c.length; i++) {
-            Closeable closeable = c[i];
+        for (Closeable aC : c) {
+            Closeable closeable = aC;
             if (closeable != null) {
                 try {
                     closeable.close();

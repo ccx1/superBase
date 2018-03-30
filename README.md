@@ -128,6 +128,32 @@
    
    [dagger2的框架注入](https://www.jianshu.com/p/47c7306b2994)
    
+   
+   18. 封装了IM聊天基础框架,可以上传文本,图片,文件,语音.采用websocket,主要的使用方法是 
+   
+     BaseIMClient.getInstance().init(this,"");
+     BaseIMClient.getInstance().chatManager().addMessageListener(new BaseService.OnSocketStateListener() {
+         @Override
+         public void onConnect(URI uri) {
+    
+         }
+    
+         @Override
+         public void onMessage(URI uri, String msg) {
+    
+         }
+    
+         @Override
+         public void onClose(URI uri, int code, String msg) {
+    
+         }
+    
+         @Override
+         public void onError(Exception e) {
+    
+         }
+     });
+     
 
 ### 后续大概会继续更新左侧导航类,自定义控件使用,工具类的完善,以及几个管理类别的处理,以及RXJAVA的处理方式等等
 
@@ -159,8 +185,6 @@
    1. [websocket](https://github.com/TooTallNate/Java-WebSocket) 
 
 #### mark点
-
-1. 原先想写流式布局,发现这里有个更好的,暂时先记录坐标
 
    [比较喜欢的一个流式布局](https://github.com/hongyangAndroid/FlowLayout)
 

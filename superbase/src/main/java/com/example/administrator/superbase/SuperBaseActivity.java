@@ -20,10 +20,10 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.administrator.superbase.Receiver.NetBroadcastReceiver;
-import com.example.administrator.superbase.utils.common.ToastUtil;
 import com.example.administrator.superbase.utils.NetUtils;
 import com.example.administrator.superbase.utils.PermissionRequesUtls;
 import com.example.administrator.superbase.utils.common.LogUtil;
+import com.example.administrator.superbase.utils.common.ToastUtil;
 import com.example.administrator.superbase.view.NetworkStateView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -46,6 +46,7 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     public  ActionBar mActionBar;
     private NetBroadcastReceiver mNetBroadcastReceiver = new NetBroadcastReceiver();
     private NetworkStateView mNetworkStateView;
+    private boolean isTransverse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
         //获取activitymanager管理器,进行统一管理
 
         setContentView(BindLayout());
+
 
         //绑定黄油刀
 
@@ -81,6 +83,9 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
         // 进入页面之后的判断网络情况
         intent.setAction(BaseConstant.ACTION_ONE_SEND);
         sendBroadcast(intent);
+
+
+
     }
 
     private void initRegister() {
@@ -394,4 +399,8 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
         ToastUtil.ToastLongTimeShow(s);
     }
 
+
+    public void setTransverse(boolean transverse) {
+        isTransverse = transverse;
+    }
 }

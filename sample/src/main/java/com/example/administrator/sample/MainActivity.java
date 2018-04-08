@@ -12,16 +12,20 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int BindLayout() {
+
         return R.layout.activity_main;
     }
 
     @Override
     protected void initView() {
         super.initView();
+
+        setTransverse(true);
         mNetworkStateView = (NetworkStateView) $(R.id.nwsv);
         super.registerNetWorkStateView(mNetworkStateView);
         mView = (TextView) $(R.id.textview);
 
-
     }
+
+
 }

@@ -5,11 +5,11 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.example.administrator.superbase.R;
 
@@ -21,7 +21,7 @@ import com.example.administrator.superbase.R;
  * @创建时间 2018/2/2 18:32
  */
 
-public class NetworkStateView extends LinearLayout {
+public class NetworkStateView extends LinearLayoutCompat {
 
     private final Context context;
     //当前的加载状态

@@ -3,6 +3,7 @@ package com.example.administrator.superbase;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -22,6 +23,7 @@ import android.view.WindowManager;
 import com.example.administrator.superbase.Receiver.NetBroadcastReceiver;
 import com.example.administrator.superbase.utils.NetUtils;
 import com.example.administrator.superbase.utils.PermissionRequesUtls;
+import com.example.administrator.superbase.utils.ReceiverF;
 import com.example.administrator.superbase.utils.common.LogUtil;
 import com.example.administrator.superbase.utils.common.ToastUtil;
 import com.example.administrator.superbase.view.NetworkStateView;
@@ -41,12 +43,14 @@ import java.util.List;
 
 public abstract class SuperBaseActivity extends AppCompatActivity implements PermissionRequesUtls.OnRequestPermissionsResultCallbacks, NetBroadcastReceiver.onNetWorkStateEvent {
     private SparseArray<View> mSparseArray = new SparseArray<>();
-    private long      mTimeMillis;
-    private Toolbar   toolbar;
-    public  ActionBar mActionBar;
-    private NetBroadcastReceiver mNetBroadcastReceiver = new NetBroadcastReceiver();
-    private NetworkStateView mNetworkStateView;
-    private boolean isTransverse;
+    private long                 mTimeMillis;
+    private Toolbar              toolbar;
+    public  ActionBar            mActionBar;
+    private NetBroadcastReceiver mNetBroadcastReceiver;
+    private NetworkStateView     mNetworkStateView;
+    private boolean              isTransverse;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,30 +74,40 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
 
         }
 
+
         //初始化布局
         initView();
+        //是否横向
+        if(getRequestedOrientation()!= ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE && isTransverse){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         //初始化数据
         initData();
 
-        //初始化注册
-        initRegister();
 
+        initRegister();
         Intent intent = new Intent();
         // 进入页面之后的判断网络情况
         intent.setAction(BaseConstant.ACTION_ONE_SEND);
         sendBroadcast(intent);
 
 
-
     }
 
     private void initRegister() {
+        mNetBroadcastReceiver = (NetBroadcastReceiver) ReceiverF.getReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
         filter.addAction(BaseConstant.ACTION_ONE_SEND);
         registerReceiver(mNetBroadcastReceiver, filter);
         mNetBroadcastReceiver.setOnNetWorkStateEvent(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     public Toolbar getToolbar() {
@@ -183,7 +197,11 @@ public abstract class SuperBaseActivity extends AppCompatActivity implements Per
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(mNetBroadcastReceiver);
+        if (mNetBroadcastReceiver!= null) {
+
+            unregisterReceiver(mNetBroadcastReceiver);
+            ReceiverF.onDestroy();
+        }
 
     }
 

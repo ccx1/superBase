@@ -18,7 +18,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        super.initView();
 
         setTransverse(true);
         mNetworkStateView = (NetworkStateView) $(R.id.nwsv);
@@ -26,6 +25,12 @@ public class MainActivity extends BaseActivity {
         mView = (TextView) $(R.id.textview);
 
     }
+
+    @Override
+    protected void initData() {
+
+    }
+
 
 
 }

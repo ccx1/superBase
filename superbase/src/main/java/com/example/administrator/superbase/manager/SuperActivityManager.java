@@ -1,8 +1,9 @@
 package com.example.administrator.superbase.manager;
 
-import android.app.Activity;
+import com.example.administrator.superbase.SuperBaseActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/9/22.
@@ -14,8 +15,8 @@ import java.util.ArrayList;
 public class SuperActivityManager {
 
 
-    private static final SuperActivityManager instance = new SuperActivityManager();
-    private ArrayList<Activity> activityStack;
+    private static SuperActivityManager    instance      = new SuperActivityManager();
+    private        List<SuperBaseActivity> activityStack = new ArrayList<>();;
 
     public static SuperActivityManager getInstance() {
         return instance;
@@ -24,55 +25,27 @@ public class SuperActivityManager {
     private SuperActivityManager() {
     }
 
-
-    //传入一个activity添加到集合中
-    public void pushOneActivity(Activity actvity) {
-        if (activityStack == null) {
-            activityStack = new ArrayList<Activity>();
-        }
-        activityStack.add(actvity);
-
+    public void openActivity(SuperBaseActivity activity){
+        activityStack.add(activity);
     }
 
+    public void removeActivity(SuperBaseActivity activity){
+        if (activity != null && activityStack.contains(activity)) {
+            activityStack.remove(activity);
+            activity = null;
+        }
+    }
 
-
-    //退出所有activity
-    public void finishAllActivity() {
-        if (activityStack != null) {
-            while (activityStack.size() > 0) {
-                Activity activity = getLastActivity();
-                if (activity == null) {
-                    break;
+    public void removeAllActivity(){
+        if (activityStack.size() > 0) {
+            for (int i = activityStack.size()-1; i >= 0; i--) {
+                SuperBaseActivity superBaseActivity = activityStack.get(i);
+                activityStack.remove(superBaseActivity);
+                if (superBaseActivity != null) {
+                    superBaseActivity = null;
                 }
-                popOneActivity(activity);
             }
         }
     }
-
-    //获取栈顶的activity，先进后出原则
-    public Activity getLastActivity() {
-        if (activityStack.size() == 0) {
-            return null;
-        }
-
-        return activityStack.get(activityStack.size()-1);
-    }
-    //移除一个activity
-    public void popOneActivity(Activity activity) {
-        if (activityStack != null && activityStack.size() > 0) {
-            if (activity != null) {
-                activity.finish();
-                activityStack.remove(activity);
-                activity = null;
-            }
-
-        }
-    }
-
-
-
-
-
-
 
 }

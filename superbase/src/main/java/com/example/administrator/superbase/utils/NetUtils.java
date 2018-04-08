@@ -262,9 +262,9 @@ public class NetUtils {
         }
     }
 
-    public static int getNetWorkState() {
+    public static int getNetWorkState(Context context) {
         // 得到连接管理器对象
-        ConnectivityManager connectivityManager = (ConnectivityManager) mContext
+        ConnectivityManager connectivityManager = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetworkInfo = connectivityManager

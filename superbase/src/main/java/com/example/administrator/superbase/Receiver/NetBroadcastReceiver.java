@@ -22,7 +22,7 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(ConnectivityManager.CONNECTIVITY_ACTION) || intent.getAction().equals(BaseConstant.ACTION_ONE_SEND)) {
-            int netWorkState = NetUtils.getNetWorkState();
+            int netWorkState = NetUtils.getNetWorkState(context);
             // 接口回调传过去状态的类型
             mOnNetWorkStateEvent.onNetStateEvent(netWorkState);
         }

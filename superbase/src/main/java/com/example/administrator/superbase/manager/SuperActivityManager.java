@@ -15,8 +15,9 @@ import java.util.List;
 public class SuperActivityManager {
 
 
-    private static SuperActivityManager    instance      = new SuperActivityManager();
-    private        List<Activity> activityStack = new ArrayList<>();;
+    private static SuperActivityManager instance      = new SuperActivityManager();
+    private        List<Activity>       activityStack = new ArrayList<>();
+    ;
 
     public static SuperActivityManager getInstance() {
         return instance;
@@ -25,28 +26,32 @@ public class SuperActivityManager {
     private SuperActivityManager() {
     }
 
-    public void pushOneActivity(Activity activity){
+    public void pushOneActivity(Activity activity) {
         activityStack.add(activity);
     }
 
-    public void removeActivity(Activity activity){
+    public void removeActivity(Activity activity) {
         if (activity != null && activityStack.contains(activity)) {
             activityStack.remove(activity);
             activity = null;
         }
     }
 
-    Activity getLastActivty(){
-        return activityStack.get(activityStack.size()-1);
+    Activity getLastActivty() {
+        if (activityStack.size() == 0) {
+            return null;
+        }
+        return activityStack.get(activityStack.size() - 1);
     }
 
-    public void removeAllActivity(){
-        if (activityStack.size() > 0) {
-            while(activityStack.size() > 0){
-                Activity lastActivty = getLastActivty();
+    public void removeAllActivity() {
+        while (activityStack.size() > 0) {
+            Activity lastActivty = getLastActivty();
+            if (lastActivty != null) {
                 removeActivity(lastActivty);
             }
         }
+
     }
 
 }

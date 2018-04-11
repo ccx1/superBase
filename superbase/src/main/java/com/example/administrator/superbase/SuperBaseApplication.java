@@ -31,12 +31,12 @@ public class SuperBaseApplication extends Application {
         registerActivityLifecycleCallbacks(new ActivityLifecycleListener() {
             @Override
             public void onActivityStartedListerner(Activity activity) {
-                SuperActivityManager.getInstance().openActivity((SuperBaseActivity) activity);
+                SuperActivityManager.getInstance().pushOneActivity(activity);
             }
 
             @Override
             protected void onActivityDestroyedListerner(Activity activity) {
-                SuperActivityManager.getInstance().removeActivity((SuperBaseActivity) activity);
+                SuperActivityManager.getInstance().removeActivity( activity);
             }
         });
 

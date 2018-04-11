@@ -1,6 +1,6 @@
 package com.example.administrator.superbase.manager;
 
-import com.example.administrator.superbase.SuperBaseActivity;
+import android.app.Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class SuperActivityManager {
 
 
     private static SuperActivityManager    instance      = new SuperActivityManager();
-    private        List<SuperBaseActivity> activityStack = new ArrayList<>();;
+    private        List<Activity> activityStack = new ArrayList<>();;
 
     public static SuperActivityManager getInstance() {
         return instance;
@@ -25,25 +25,26 @@ public class SuperActivityManager {
     private SuperActivityManager() {
     }
 
-    public void openActivity(SuperBaseActivity activity){
+    public void pushOneActivity(Activity activity){
         activityStack.add(activity);
     }
 
-    public void removeActivity(SuperBaseActivity activity){
+    public void removeActivity(Activity activity){
         if (activity != null && activityStack.contains(activity)) {
             activityStack.remove(activity);
             activity = null;
         }
     }
 
+    Activity getLastActivty(){
+        return activityStack.get(activityStack.size()-1);
+    }
+
     public void removeAllActivity(){
         if (activityStack.size() > 0) {
-            for (int i = activityStack.size()-1; i >= 0; i--) {
-                SuperBaseActivity superBaseActivity = activityStack.get(i);
-                activityStack.remove(superBaseActivity);
-                if (superBaseActivity != null) {
-                    superBaseActivity = null;
-                }
+            while(activityStack.size() > 0){
+                Activity lastActivty = getLastActivty();
+                removeActivity(lastActivty);
             }
         }
     }

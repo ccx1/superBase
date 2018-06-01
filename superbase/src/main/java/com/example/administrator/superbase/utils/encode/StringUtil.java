@@ -100,6 +100,51 @@ public class StringUtil {
         }
     }
 
+    public static int countMatches(CharSequence str, CharSequence sub) {
+        if(!isEmpty(str + "") && !isEmpty(sub + "")) {
+            int count = 0;
+
+            for(int idx = 0; (idx = CharSequenceUtils.indexOf(str, sub, idx)) != -1; idx += sub.length()) {
+                ++count;
+            }
+
+            return count;
+        } else {
+            return 0;
+        }
+    }
+
+    public static String join(Object[] array, char separator) {
+        return array == null?null:join((Object[])array, separator, 0, array.length);
+    }
+
+
+    public static String join(Object[] array, char separator, int startIndex, int endIndex) {
+        if(array == null) {
+            return null;
+        } else {
+            int noOfItems = endIndex - startIndex;
+            if(noOfItems <= 0) {
+                return "";
+            } else {
+                StringBuilder buf = new StringBuilder(noOfItems * 16);
+
+                for(int i = startIndex; i < endIndex; ++i) {
+                    if(i > startIndex) {
+                        buf.append(separator);
+                    }
+
+                    if(array[i] != null) {
+                        buf.append(array[i]);
+                    }
+                }
+
+                return buf.toString();
+            }
+        }
+    }
+
+
     public static boolean isBlank(CharSequence cs) {
         int strLen;
         if(cs != null && (strLen = cs.length()) != 0) {
@@ -120,5 +165,27 @@ public class StringUtil {
     }
     private static boolean startsWith(CharSequence str, CharSequence prefix, boolean ignoreCase) {
         return str != null && prefix != null?(prefix.length() > str.length()?false: CharSequenceUtils.regionMatches(str, ignoreCase, 0, prefix, 0, prefix.length())):str == null && prefix == null;
+    }
+
+    public static String deleteWhitespace(String str) {
+        if(isEmpty(str)) {
+            return str;
+        } else {
+            int sz = str.length();
+            char[] chs = new char[sz];
+            int count = 0;
+
+            for(int i = 0; i < sz; ++i) {
+                if(!Character.isWhitespace(str.charAt(i))) {
+                    chs[count++] = str.charAt(i);
+                }
+            }
+
+            if(count == sz) {
+                return str;
+            } else {
+                return new String(chs, 0, count);
+            }
+        }
     }
 }

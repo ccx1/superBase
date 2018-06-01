@@ -24,7 +24,6 @@ import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
@@ -52,10 +51,10 @@ public class WebUtil {
     }
 
     public static String doPost(String url, Map<String, String> params, String charset, int connectTimeout, int readTimeout) throws IOException {
-        String ctype = "application/json;charset=" + charset;
-        String query = buildQuery(params, charset);
+        String ctype   = "application/json;charset=" + charset;
+        String query   = buildQuery(params, charset);
         byte[] content = new byte[0];
-        if(query != null) {
+        if (query != null) {
             content = query.getBytes(charset);
         }
 
@@ -64,8 +63,8 @@ public class WebUtil {
 
     public static String doPost(String url, String ctype, byte[] content, int connectTimeout, int readTimeout) throws IOException {
         HttpURLConnection conn = null;
-        OutputStream out = null;
-        String rsp = null;
+        OutputStream      out  = null;
+        String            rsp  = null;
 
         try {
             conn = getConnection(new URL(url), "POST", ctype);
@@ -77,11 +76,11 @@ public class WebUtil {
         } catch (IOException var12) {
             throw var12;
         } finally {
-            if(out != null) {
+            if (out != null) {
                 out.close();
             }
 
-            if(conn != null) {
+            if (conn != null) {
                 conn.disconnect();
             }
 
@@ -96,7 +95,7 @@ public class WebUtil {
 
     public static String doGet(String url, Map<String, String> params, String charset) throws IOException {
         HttpURLConnection conn = null;
-        String rsp = null;
+        String            rsp  = null;
 
         try {
             String ctype = "application/x-www-form-urlencoded;charset=" + charset;
@@ -106,7 +105,7 @@ public class WebUtil {
         } catch (IOException var10) {
             throw var10;
         } finally {
-            if(conn != null) {
+            if (conn != null) {
                 conn.disconnect();
             }
 
@@ -117,35 +116,35 @@ public class WebUtil {
 
     private static HttpURLConnection getConnection(URL url, String method, String ctype) throws IOException {
         HttpURLConnection conn = null;
-        if("https".equals(url.getProtocol())) {
-            HttpsURLConnection connHttps = (HttpsURLConnection)url.openConnection();
+        if ("https".equals(url.getProtocol())) {
+            HttpsURLConnection connHttps = (HttpsURLConnection) url.openConnection();
             connHttps.setSSLSocketFactory(socketFactory);
             connHttps.setHostnameVerifier(verifier);
             conn = connHttps;
         } else {
-            conn = (HttpURLConnection)url.openConnection();
+            conn = (HttpURLConnection) url.openConnection();
         }
 
-        ((HttpURLConnection)conn).setRequestMethod(method);
-        ((HttpURLConnection)conn).setDoInput(true);
-        ((HttpURLConnection)conn).setDoOutput(true);
-        ((HttpURLConnection)conn).setRequestProperty("User-Agent", "aop-sdk-java");
-        ((HttpURLConnection)conn).setRequestProperty("Content-Type", ctype);
-        return (HttpURLConnection)conn;
+        ((HttpURLConnection) conn).setRequestMethod(method);
+        ((HttpURLConnection) conn).setDoInput(true);
+        ((HttpURLConnection) conn).setDoOutput(true);
+        ((HttpURLConnection) conn).setRequestProperty("User-Agent", "aop-sdk-java");
+        ((HttpURLConnection) conn).setRequestProperty("Content-Type", ctype);
+        return (HttpURLConnection) conn;
     }
 
     private static URL buildGetUrl(String strUrl, String query) throws IOException {
         URL url = new URL(strUrl);
-        if(StringUtil.isEmpty(query)) {
+        if (StringUtil.isEmpty(query)) {
             return url;
         } else {
-            if(StringUtil.isEmpty(url.getQuery())) {
-                if(strUrl.endsWith("?")) {
+            if (StringUtil.isEmpty(url.getQuery())) {
+                if (strUrl.endsWith("?")) {
                     strUrl = strUrl + query;
                 } else {
                     strUrl = strUrl + "?" + query;
                 }
-            } else if(strUrl.endsWith("&")) {
+            } else if (strUrl.endsWith("&")) {
                 strUrl = strUrl + query;
             } else {
                 strUrl = strUrl + "&" + query;
@@ -156,18 +155,18 @@ public class WebUtil {
     }
 
     public static String buildQuery(Map<String, String> params, String charset) throws IOException {
-        if(params != null && !params.isEmpty()) {
-            StringBuilder query = new StringBuilder();
-            Set<Map.Entry<String, String>> entries = params.entrySet();
-            boolean hasParam = false;
-            Iterator var5 = entries.iterator();
+        if (params != null && !params.isEmpty()) {
+            StringBuilder                  query    = new StringBuilder();
+            Set<Map.Entry<String, String>> entries  = params.entrySet();
+            boolean                        hasParam = false;
+            Iterator                       var5     = entries.iterator();
 
-            while(var5.hasNext()) {
-                Map.Entry<String, String> entry = (Map.Entry)var5.next();
-                String name = (String)entry.getKey();
-                String value = (String)entry.getValue();
-                if(StringUtil.areNotEmpty(new String[]{name, value})) {
-                    if(hasParam) {
+            while (var5.hasNext()) {
+                Map.Entry<String, String> entry = (Map.Entry) var5.next();
+                String                    name  = (String) entry.getKey();
+                String                    value = (String) entry.getValue();
+                if (StringUtil.areNotEmpty(new String[]{name, value})) {
+                    if (hasParam) {
                         query.append(",");
                     } else {
                         query.append("{");
@@ -178,7 +177,7 @@ public class WebUtil {
                 }
             }
 
-            if(hasParam) {
+            if (hasParam) {
                 query.append("}");
             }
 
@@ -189,13 +188,13 @@ public class WebUtil {
     }
 
     protected static String getResponseAsString(HttpURLConnection conn) throws IOException {
-        String charset = getResponseCharset(conn.getContentType());
-        InputStream es = conn.getErrorStream();
-        if(es == null) {
+        String      charset = getResponseCharset(conn.getContentType());
+        InputStream es      = conn.getErrorStream();
+        if (es == null) {
             return getStreamAsString(conn.getInputStream(), charset);
         } else {
             String msg = getStreamAsString(es, charset);
-            if(StringUtil.isEmpty(msg)) {
+            if (StringUtil.isEmpty(msg)) {
                 throw new IOException(conn.getResponseCode() + ":" + conn.getResponseMessage());
             } else {
                 throw new IOException(msg);
@@ -206,19 +205,19 @@ public class WebUtil {
     private static String getStreamAsString(InputStream stream, String charset) throws IOException {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(stream, charset));
-            StringWriter writer = new StringWriter();
-            char[] chars = new char[256];
-            boolean var5 = false;
+            StringWriter   writer = new StringWriter();
+            char[]         chars  = new char[256];
+            boolean        var5   = false;
 
             int count;
-            while((count = reader.read(chars)) > 0) {
+            while ((count = reader.read(chars)) > 0) {
                 writer.write(chars, 0, count);
             }
 
             String var6 = writer.toString();
             return var6;
         } finally {
-            if(stream != null) {
+            if (stream != null) {
                 stream.close();
             }
 
@@ -227,17 +226,17 @@ public class WebUtil {
 
     private static String getResponseCharset(String ctype) {
         String charset = "UTF-8";
-        if(!StringUtil.isEmpty(ctype)) {
+        if (!StringUtil.isEmpty(ctype)) {
             String[] params = ctype.split(";");
-            String[] var3 = params;
-            int var4 = params.length;
+            String[] var3   = params;
+            int      var4   = params.length;
 
-            for(int var5 = 0; var5 < var4; ++var5) {
+            for (int var5 = 0; var5 < var4; ++var5) {
                 String param = var3[var5];
                 param = param.trim();
-                if(param.startsWith("charset")) {
+                if (param.startsWith("charset")) {
                     String[] pair = param.split("=", 2);
-                    if(pair.length == 2 && !StringUtil.isEmpty(pair[1])) {
+                    if (pair.length == 2 && !StringUtil.isEmpty(pair[1])) {
                         charset = pair[1].trim();
                     }
                     break;
@@ -258,7 +257,7 @@ public class WebUtil {
 
     public static String decode(String value, String charset) {
         String result = null;
-        if(!StringUtil.isEmpty(value)) {
+        if (!StringUtil.isEmpty(value)) {
             try {
                 result = URLDecoder.decode(value, charset);
             } catch (IOException var4) {
@@ -271,7 +270,7 @@ public class WebUtil {
 
     public static String encode(String value, String charset) {
         String result = null;
-        if(!StringUtil.isEmpty(value)) {
+        if (!StringUtil.isEmpty(value)) {
             try {
                 result = URLEncoder.encode(value, charset);
             } catch (IOException var4) {
@@ -284,15 +283,15 @@ public class WebUtil {
 
     public static Map<String, String> splitUrlQuery(String query) {
         Map<String, String> result = new HashMap();
-        String[] pairs = query.split("&");
-        if(pairs != null && pairs.length > 0) {
+        String[]            pairs  = query.split("&");
+        if (pairs != null && pairs.length > 0) {
             String[] var3 = pairs;
-            int var4 = pairs.length;
+            int      var4 = pairs.length;
 
-            for(int var5 = 0; var5 < var4; ++var5) {
-                String pair = var3[var5];
+            for (int var5 = 0; var5 < var4; ++var5) {
+                String   pair  = var3[var5];
                 String[] param = pair.split("=", 2);
-                if(param != null && param.length == 2) {
+                if (param != null && param.length == 2) {
                     result.put(param[0], param[1]);
                 }
             }
@@ -315,15 +314,15 @@ public class WebUtil {
     }
 
     private static String buildHiddenFields(Map<String, String> parameters) {
-        if(parameters != null && !parameters.isEmpty()) {
-            StringBuffer sb = new StringBuffer();
-            Set<String> keys = parameters.keySet();
-            Iterator var3 = keys.iterator();
+        if (parameters != null && !parameters.isEmpty()) {
+            StringBuffer sb   = new StringBuffer();
+            Set<String>  keys = parameters.keySet();
+            Iterator     var3 = keys.iterator();
 
-            while(var3.hasNext()) {
-                String key = (String)var3.next();
-                String value = (String)parameters.get(key);
-                if(key != null && value != null) {
+            while (var3.hasNext()) {
+                String key   = (String) var3.next();
+                String value = (String) parameters.get(key);
+                if (key != null && value != null) {
                     sb.append(buildHiddenField(key, value));
                 }
             }
@@ -352,15 +351,11 @@ public class WebUtil {
             ctx.getClientSessionContext().setSessionTimeout(15);
             ctx.getClientSessionContext().setSessionCacheSize(1000);
             socketFactory = ctx.getSocketFactory();
-        } catch (Exception var1) {
-            ;
+        } catch (Exception ignored) {
+
         }
 
-        verifier = new HostnameVerifier() {
-            public boolean verify(String hostname, SSLSession session) {
-                return false;
-            }
-        };
+        verifier = new com.example.administrator.superbase.utils.HostnameVerifier();
     }
 
     private static class DefaultTrustManager implements X509TrustManager {

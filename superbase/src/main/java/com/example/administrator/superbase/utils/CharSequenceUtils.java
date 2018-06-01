@@ -50,7 +50,7 @@ public class CharSequenceUtils {
         }
     }
 
-    static int indexOf(CharSequence cs, CharSequence searchChar, int start) {
+    public static int indexOf(CharSequence cs, CharSequence searchChar, int start) {
         return cs.toString().indexOf(searchChar.toString(), start);
     }
 

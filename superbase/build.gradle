@@ -4,7 +4,7 @@ group='com.github.ci250454344'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
     dexOptions {
         javaMaxHeapSize "4g"
     }
@@ -26,9 +26,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support:multidex:1.0.2'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:multidex:1.0.2'
 
 }

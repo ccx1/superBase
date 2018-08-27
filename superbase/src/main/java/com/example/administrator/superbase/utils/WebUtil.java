@@ -96,7 +96,6 @@ public class WebUtil {
     public static String doGet(String url, Map<String, String> params, String charset) throws IOException {
         HttpURLConnection conn = null;
         String            rsp  = null;
-
         try {
             String ctype = "application/x-www-form-urlencoded;charset=" + charset;
             String query = buildQuery(params, charset);
@@ -126,8 +125,10 @@ public class WebUtil {
         }
 
         ((HttpURLConnection) conn).setRequestMethod(method);
-        ((HttpURLConnection) conn).setDoInput(true);
-        ((HttpURLConnection) conn).setDoOutput(true);
+        if (method.equalsIgnoreCase("post")) {
+            ((HttpURLConnection) conn).setDoInput(true);
+            ((HttpURLConnection) conn).setDoOutput(true);
+        }
         ((HttpURLConnection) conn).setRequestProperty("User-Agent", "aop-sdk-java");
         ((HttpURLConnection) conn).setRequestProperty("Content-Type", ctype);
         return (HttpURLConnection) conn;
